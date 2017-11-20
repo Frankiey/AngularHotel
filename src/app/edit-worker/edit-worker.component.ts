@@ -17,6 +17,8 @@ export class EditWorkerComponent implements OnInit {
   inputRole: string;
   inputStartDate: Date;
 
+  index: number;
+
   constructor(
     private route: ActivatedRoute,
     private location: Location,
@@ -30,12 +32,21 @@ export class EditWorkerComponent implements OnInit {
   getWorker(): void{
     const id = +this.route.snapshot.paramMap.get('id');
     let worker = this.workerService.getWorker(id);
+    this.index = this.workerService.workers.indexOf(worker);
     this.id = worker.id;
     this.inputName = worker.name;
     this.inputRole = worker.role;
     this.inputStartDate = worker.dateFrom;
   }
 
-  
+  submit(): void {
+    this.workerService.workers[this.index] = {
+        id : this.id,
+        name: this.inputName,
+        role: this.inputRole,
+        dateFrom: this.inputStartDate
+      };
+      console.log('added');
+      console.log(this.workerService.workers);
 
 }

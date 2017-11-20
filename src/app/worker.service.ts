@@ -11,13 +11,13 @@ export class WorkerService {
     this.workers = [
       {
         id: 1,
-        name: 'jan janssen',
+        name: 'Jan Janssen',
         role: 'schoonmaker',
         dateFrom: new Date(2017, 1)
       },
       {
         id: 2,
-        name: 'Karel karelssen',
+        name: 'Karel Karelssen',
         role: 'receptionist',
         dateFrom: new Date(2017, 5)
       },

@@ -1,5 +1,5 @@
 <label>Id:
-  <input [(ngModel)]="id" placeholder="id">
+  <input [(ngModel)]="id" placeholder="id" disabled>
 </label>
 <label>name:
   <input [(ngModel)]="inputName" placeholder="name">
@@ -8,7 +8,7 @@
   <input [(ngModel)]="inputRole" placeholder="Role">
 </label>
 <label>name:
-  <input type="date" [(ngModel)]="inputStartDate" placeholder="Date">
+  <input type="date" [(ngModel)]="inputStartDate" placeholder="Date" disabled>
 </label>
 
 <button (click)="submit()">Submit</button>
