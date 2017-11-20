@@ -30,6 +30,8 @@ export class WorkerService {
     ];
    }
 
-
+getWorker(id: number): Worker{
+  return this.workers.find( x => x.id === id);
+}
 
 }

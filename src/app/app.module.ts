@@ -6,15 +6,18 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { WorkersOverviewComponent } from './workers-overview/workers-overview.component';
 import { AddWorkerComponent } from './add-worker/add-worker.component';
-import { AppRoutingModule } from './/app-routing.module';
-import { WorkerService } from './worker.service'
+import { AppRoutingModule } from './app-routing.module';
+import { WorkerService } from './worker.service';
+import { EditWorkerComponent } from './edit-worker/edit-worker.component'
 
 
 @NgModule({
   declarations: [
     AppComponent,
     WorkersOverviewComponent,
-    AddWorkerComponent
+    AddWorkerComponent,
+    EditWorkerComponent,
+    AppRoutingModule
   ],
   imports: [
     BrowserModule,
