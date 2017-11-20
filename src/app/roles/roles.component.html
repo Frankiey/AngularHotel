@@ -1,0 +1,15 @@
+<table width="15%">
+  <tr>
+    <th>role</th>
+    <th></th>
+  </tr>
+  <tr *ngFor ="let role of roles">
+    <td width="10%"> {{role}}</td>
+    <td width="15%"> <button class="delete" title="delete role"
+      (click)="deleteRole(role)">delete</button></td>
+  </tr>
+<br>
+  <label>role name:
+    <input type="string" [(ngModel)]="role" placeholder="Role">
+</label>
+  <button (click)="submitRole()">Submit</button>

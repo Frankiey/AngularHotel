@@ -8,7 +8,9 @@ import { WorkersOverviewComponent } from './workers-overview/workers-overview.co
 import { AddWorkerComponent } from './add-worker/add-worker.component';
 import { AppRoutingModule } from './app-routing.module';
 import { WorkerService } from './worker.service';
-import { EditWorkerComponent } from './edit-worker/edit-worker.component'
+import { EditWorkerComponent } from './edit-worker/edit-worker.component';
+import { RolesService } from './roles.service';
+import { RolesComponent } from './roles/roles.component';
 
 
 @NgModule({
@@ -16,14 +18,15 @@ import { EditWorkerComponent } from './edit-worker/edit-worker.component'
     AppComponent,
     WorkersOverviewComponent,
     AddWorkerComponent,
-    EditWorkerComponent
+    EditWorkerComponent,
+    RolesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule
   ],
-  providers: [WorkerService],
+  providers: [WorkerService, RolesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
