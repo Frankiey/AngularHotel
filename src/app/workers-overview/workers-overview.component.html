@@ -1,6 +1,10 @@
-<p>
-  workers-overview works!
-</p>
+<div>
+    <label>name:
+      <input [(ngModel)]="inputName" placeholder="name">
+    </label>
+    <button (click)="filter();">Search</button>
+</div>
+<button><a href="/addworker">Add</a></button>
 
 <table width="50%">
   <tr>
@@ -9,18 +13,10 @@
     <th>role</th>
     <th>Date From</th>
   </tr>
-  <tr *ngFor="let worker of workers">
+  <tr *ngFor="let worker of workersDisplay">
     <td width="25%">{{ worker.id }}    </td>
     <td width="25%">{{ worker.name }}     </td>
     <td width="25%">{{ worker.role }}     </td>
     <td width="25%"> {{worker.dateFrom.getDay()}} / {{worker.dateFrom.getMonth()}} / {{worker.dateFrom.getFullYear()}} </td>
   </tr>
 </table>
-
-<br/>
-Search bar here
-
-<br/>
-Werknemers tabel
-
-

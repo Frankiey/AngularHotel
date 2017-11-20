@@ -8,6 +8,8 @@ import { Worker } from '../worker';
 })
 export class WorkersOverviewComponent implements OnInit {
 
+  inputName: string;
+
   workers: Worker[] = [
     {
       id: 1,
@@ -28,9 +30,18 @@ export class WorkersOverviewComponent implements OnInit {
       dateFrom: new Date(2017, 10)
     }
   ];
+
+  workersDisplay = this.workers;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  filter(): void {
+    this.workersDisplay = this.workers;
+    console.log('filtered');
+    this.workersDisplay = this.workersDisplay.filter(worker => worker.name.includes(this.inputName));
   }
 
 }
