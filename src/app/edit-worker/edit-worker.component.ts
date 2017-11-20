@@ -29,7 +29,7 @@ export class EditWorkerComponent implements OnInit {
     this.getWorker();
   }
 
-  getWorker(): void{
+  getWorker(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     let worker = this.workerService.getWorker(id);
     this.index = this.workerService.workers.indexOf(worker);
@@ -48,5 +48,10 @@ export class EditWorkerComponent implements OnInit {
       };
       console.log('added');
       console.log(this.workerService.workers);
+  }
 
+  delete(): void {
+    this.workerService.workers.splice(this.index, 1);
+    console.log(this.workerService.workers);
+  }
 }
