@@ -1,0 +1,26 @@
+<p>
+  workers-overview works!
+</p>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>role</th>
+    <th>Date From</th>
+  </tr>
+  <tr *ngFor="let worker of workers">
+    <td>{{ worker.id }}    </td>
+    <td>{{ worker.name }}     </td>
+    <td>{{ worker.role }}     </td>
+    <td> {{worker.dateFrom.getDay()}} / {{worker.dateFrom.getMonth()}} / {{worker.dateFrom.getFullYear()}} </td>
+  </tr>
+</table>
+
+<br/>
+Search bar here
+
+<br/>
+Werknemers tabel
+
+
