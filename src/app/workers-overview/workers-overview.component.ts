@@ -8,9 +8,7 @@ import { Worker } from '../worker';
 })
 export class WorkersOverviewComponent implements OnInit {
 
-  inputName: string;
-
-  workers: Worker[] = [
+  static workers: Worker[] = [
     {
       id: 1,
       name: 'jan janssen',
@@ -31,15 +29,19 @@ export class WorkersOverviewComponent implements OnInit {
     }
   ];
 
-  workersDisplay = this.workers;
+  inputName: string;
+
+  workersDisplay = WorkersOverviewComponent.workers;
 
   constructor() { }
 
   ngOnInit() {
+    console.log('overview Initied');
   }
 
   filter(): void {
-    this.workersDisplay = this.workers;
+    console.log(WorkersOverviewComponent.workers);
+    this.workersDisplay = WorkersOverviewComponent.workers;
     console.log('filtered');
     this.workersDisplay = this.workersDisplay.filter(worker => worker.name.includes(this.inputName));
   }
