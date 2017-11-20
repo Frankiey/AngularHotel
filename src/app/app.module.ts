@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { WorkersOverviewComponent } from './workers-overview/workers-overview.component';
 import { AddWorkerComponent } from './add-worker/add-worker.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { WorkerService } from './worker.service'
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { AppRoutingModule } from './/app-routing.module';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [WorkerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

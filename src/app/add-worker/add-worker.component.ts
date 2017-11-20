@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkersOverviewComponent } from '../workers-overview/workers-overview.component';
+import { WorkerService } from '../worker.service';
 
 @Component({
   selector: 'app-add-worker',
@@ -13,20 +14,20 @@ export class AddWorkerComponent implements OnInit {
   inputStartDate: Date;
 
 
-  constructor() { }
+  constructor(private workerService: WorkerService) { }
 
   ngOnInit() {
   }
 
   submit(): void {
-      WorkersOverviewComponent.workers.push({
+    this.workerService.workers.push({
         id : this.id,
         name: this.inputName,
         role: this.inputRole,
         dateFrom: this.inputStartDate
       });
       console.log('added');
-      console.log(WorkersOverviewComponent.workers);
+      console.log(this.workerService.workers);
   }
 
 }
