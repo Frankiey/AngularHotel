@@ -16,8 +16,7 @@ import { EditWorkerComponent } from './edit-worker/edit-worker.component'
     AppComponent,
     WorkersOverviewComponent,
     AddWorkerComponent,
-    EditWorkerComponent//,
-    // AppRoutingModule
+    EditWorkerComponent
   ],
   imports: [
     BrowserModule,
