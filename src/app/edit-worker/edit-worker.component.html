@@ -47,3 +47,15 @@
     <button (click)="submit()">Submit</button>
   </div>
 </div>
+
+<div *ngIf="successDelete" class="alert alert-success alert-dismissable">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Successfully deleted!</strong>
+    <br> closing this message sets you back to the main page
+</div>
+
+<div *ngIf="successEdit" class="alert alert-success alert-dismissable">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Successfully edited!</strong>
+    <br> closing this message sets you back to the main page
+</div>

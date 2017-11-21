@@ -21,6 +21,9 @@ export class EditWorkerComponent implements OnInit {
 
   index: number;
 
+  successDelete: boolean;
+  successEdit: boolean;
+
   constructor(
     private route: ActivatedRoute,
     private location: Location,
@@ -60,13 +63,15 @@ export class EditWorkerComponent implements OnInit {
       dateFrom: this.inputStartDate
     };
 
-    this.workerService.updateWorker(worker).subscribe(x => {
+    this.workerService.updateWorker(worker).subscribe(x =>  {
+      this.successEdit = true; 
       console.log(x);
     });
   }
 
   delete(): void {
     this.workerService.deleteWorker(this.id).subscribe(x => {
+      this.successDelete = true;
       console.log('Deleted');
     });
   }
