@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Worker } from '../worker';
 import { WorkerService } from '../worker.service';
+import { UserList, User } from '../Api-types';
 
 @Component({
   selector: 'app-workers-overview',
@@ -21,22 +22,35 @@ export class WorkersOverviewComponent implements OnInit {
   ngOnInit() {
     console.log('overview Initied');
     // this.workerService.getWorkers().subscribe(x => x.);
-    this.workerService.getWorkers();
-  }
+    this.workerService.getWorkers().subscribe(x => {
+      // Todo check any
+      let userList: UserList =  x as UserList;
+      let users: User[] = userList.data;
+      let workers2: Worker[] = users as Worker[];
 
-  delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+      this.workers = workers2;
+      console.log('Message received');
+      console.log(workers2);
+    });
   }
 
   filter(): void {
-    this.workerService.getWorkers();
-    for ( let i = 0; i < 10000; i++) {
-      console.log(i);
-    }
-    console.log('filtered');
-    this.workerService.workers = this.workerService.workers.filter(worker => worker.first_name.includes(this.inputName));
-    console.log('done filtering');
+    this.workerService.getWorkers().subscribe(x => {
+      // Todo check any
+      let userList: UserList =  x as UserList;
+      let users: User[] = userList.data;
+      let workers2: Worker[] = users as Worker[];
+
+      this.workers = workers2;
+      console.log('Message received');
+      console.log(workers2);
+      this.filterWorkers();
+    });
   }
 
-
+  filterWorkers(): void {
+    console.log('filtered');
+    this.workers = this.workers.filter(worker => worker.first_name.includes(this.inputName));
+    console.log('done filtering');
+  }
 }

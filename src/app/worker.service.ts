@@ -55,21 +55,11 @@ getWorker(id: number): Observable<SingleUser> {
 }
 
 
-getWorkers(): void {
-  this.http.get<UserList>(this.reqResUrl + 'users?per_page=999')
+getWorkers(): Observable<UserList> {
+  return this.http.get<UserList>(this.reqResUrl + 'users?per_page=999')
     .pipe(
       catchError(this.handleError<UserList>('getWorkers'))
-    )
-    .subscribe(x => {
-      // Todo check any
-      let userList: UserList =  x as UserList;
-      let users: User[] = userList.data;
-      let workers2: Worker[] = users as Worker[];
-
-      this.workers = workers2;
-      console.log('Message received');
-      console.log(workers2);
-  });
+    );
 }
 
 updateWorker(worker: Worker): Observable<any[] | Worker> {
