@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkersOverviewComponent } from '../workers-overview/workers-overview.component';
 import { WorkerService } from '../worker.service';
+import { Worker } from '../worker';
 
 @Component({
   selector: 'app-add-worker',
@@ -9,10 +10,12 @@ import { WorkerService } from '../worker.service';
 })
 export class AddWorkerComponent implements OnInit {
   id: number;
-  inputName: string;
+  inputFirstName: string;
+  inputLastName: string;
   inputRole: string;
   inputStartDate: Date;
 
+  
 
   constructor(private workerService: WorkerService) { }
 
@@ -20,16 +23,16 @@ export class AddWorkerComponent implements OnInit {
   }
 
   submit(): void {
-    this.workerService.workers.push({
+   let worker: Worker = {
         id : this.id,
-        first_name: this.inputName,
-        last_name: '',
+        first_name: this.inputFirstName,
+        last_name: this.inputLastName,
         avatar: '',
         role: this.inputRole,
         dateFrom: this.inputStartDate
-      });
-      console.log('added');
-      console.log(this.workerService.workers);
+      };
+      console.log('add created');
+      this.workerService.addWorker(worker).subscribe(x => console.log(`added ${worker.first_name} ${worker.last_name} successfully`));
   }
-
 }
+
