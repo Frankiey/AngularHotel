@@ -1,18 +1,49 @@
-<label>Id:
-  <input [(ngModel)]="id" placeholder="id" disabled>
-</label>
-<label>name:
-  <input [(ngModel)]="inputFirstName" placeholder="name">
-</label>
-<label>name:
-  <input [(ngModel)]="inputLastName" placeholder="name">
-</label>
-<label>name:
-  <input [(ngModel)]="inputRole" placeholder="Role">
-</label>
-<label>name:
-  <input type="date" [(ngModel)]="inputStartDate" placeholder="Date" disabled>
-</label>
+<div class="row">
+  <div class="col-sm-1">
+    <label>Id:</label>
+  </div>
+  <div class="col-sm-2">
+    <input [(ngModel)]="id" placeholder="id" disabled>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-1">
+    <label>First Name:</label>
+  </div>
+  <div class="col-sm-2">
+    <input [(ngModel)]="inputFirstName" placeholder="first name">
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-1">
+    <label>Last Name:</label>
+  </div>
+  <div class="col-sm-2">
+    <input [(ngModel)]="inputLastName" placeholder="last name">
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-1">
+    <label>Role:</label>
+  </div>
+  <div class="col-sm-2">
+    <input [(ngModel)]="inputRole" placeholder="Role">
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-1">
+    <label>StartDate:</label>
+  </div>
+  <div class="col-sm-2">
+    <input type="date" [(ngModel)]="inputStartDate" placeholder="Date" disabled>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-1" align="center">
+    <button (click)="delete()">Delete</button>
 
-<button (click)="submit()">Submit</button>
-<button (click)="delete()">Delete</button>
+  </div>
+  <div class="col-md-1" align="center">
+    <button (click)="submit()">Submit</button>
+  </div>
+</div>
