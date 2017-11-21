@@ -4,25 +4,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
+import { UserList, SingleUser, User} from './Api-types';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
-
-interface UserList {
-  page: number;
-  per_page: number;
-  total: number;
-  total_pages: number;
-  data: User[];
-}
-
-interface User {
-  id: number;
-  first_name: string;
-  last_name: string;
-  avatar: string;
-}
 
 @Injectable()
 export class WorkerService {
@@ -59,25 +45,33 @@ export class WorkerService {
     // ];
    }
 
-getWorker(id: number): Worker {
-  return this.workers.find( x => x.id === id);
+getWorker(id: number): Observable<SingleUser> {
+  return this.http.get<SingleUser>(this.reqResUrl + 'users/' + id).pipe(
+    catchError(this.handleError<SingleUser>('getWorker'))
+  );
+  // console.log('getworker in service:' + id);
+  // console.log(this.workers);
+  // return this.workers.find( x => x.id === id);
 }
 
 
-getWorkers(): void {
-  this.http.get<UserList>(this.reqResUrl + 'users?per_page=999')
+getWorkers(): Observable<UserList> {
+  return this.http.get<UserList>(this.reqResUrl + 'users?per_page=999')
     .pipe(
-      catchError(this.handleError('getWorkers', []))
-    ).subscribe(x => {
-        // Todo check any
-        let userList: UserList =  x as UserList;
-        let users: User[] = userList.data;
-        let workers2: Worker[] = users as Worker[];
+      catchError(this.handleError<UserList>('getWorkers'))
+    );
+}
 
-        this.workers = workers2;
-        console.log('Message received');
-        console.log(workers2);
-    });
+updateWorker(worker: Worker): Observable<any[] | Worker> {
+  return this.http.put<Worker>(this.reqResUrl + 'users/' + worker.id, worker, httpOptions).pipe(
+    catchError(this.handleError('updateWorker', []))
+  );
+}
+
+deleteWorker(id: number): Observable<{} | Worker> {
+  return this.http.delete(this.reqResUrl + 'users/' + id, httpOptions).pipe(
+    catchError(this.handleError('deleteWorker'))
+  );
 }
 addWorker(worker: Worker): Observable<Worker> {
   return this.http.post<Worker>(this.reqResUrl + 'users', httpOptions).pipe(

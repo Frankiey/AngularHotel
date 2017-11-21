@@ -9,11 +9,11 @@
 <table width="50%">
   <tr>
     <th>id</th>
-    <th>name</th>
+    <th>first name</th>
     <th>role</th>
     <th>Date From</th>
   </tr>
-  <tr *ngFor="let worker of workerService.workers">
+  <tr *ngFor="let worker of workers">
     <td width="25%">{{ worker.id }}    </td>
     <td width="25%">{{ worker.first_name }}     </td>
     <!-- <td width="25%">{{ worker.role }}     </td>
@@ -21,4 +21,3 @@
   </tr>
 </table>
 
-{{workersTest}}
