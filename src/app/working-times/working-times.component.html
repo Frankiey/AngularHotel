@@ -1,0 +1,39 @@
+<table width="50%">
+  <tr>
+    <th>Day</th>
+    <th>ochtend</th>
+    <th>middag</th>
+    <th>avond</th>
+    <th>nacht</th>
+  </tr>
+  <tr>
+    <td>ma</td>
+    <td *ngFor="let x of ma">{{x}} </td>
+  </tr>
+  <tr>
+    <td>di</td>
+    <td *ngFor="let x of di">{{x}} </td>
+  </tr>
+  <tr>
+    <td>wo</td>
+    <td *ngFor="let x of wo">
+      <input type="checkbox" [(ngModel)]="wo["{{x}}"]"> </td>
+  </tr>
+  <tr>
+    <td>do</td>
+    <td *ngFor="let x of do">{{x}} </td>
+  </tr>
+  <tr>
+    <td>vr</td>
+    <td *ngFor="let x of vr">{{x}} </td>
+  </tr>
+  <tr>
+    <td>za</td>
+    <td *ngFor="let x of za">{{x}} </td>
+  </tr>
+  <tr>
+    <td>zo</td>
+    <td *ngFor="let x of zo">{{x}} </td>
+  </tr>
+</table>
+<button (click)="log">Log</button>

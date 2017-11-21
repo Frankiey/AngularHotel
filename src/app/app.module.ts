@@ -8,7 +8,8 @@ import { WorkersOverviewComponent } from './workers-overview/workers-overview.co
 import { AddWorkerComponent } from './add-worker/add-worker.component';
 import { AppRoutingModule } from './app-routing.module';
 import { WorkerService } from './worker.service';
-import { EditWorkerComponent } from './edit-worker/edit-worker.component'
+import { EditWorkerComponent } from './edit-worker/edit-worker.component';
+import { WorkingTimesComponent } from './working-times/working-times.component'
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { EditWorkerComponent } from './edit-worker/edit-worker.component'
     AppComponent,
     WorkersOverviewComponent,
     AddWorkerComponent,
-    EditWorkerComponent//,
+    EditWorkerComponent,
+    WorkingTimesComponent//,
     // AppRoutingModule
   ],
   imports: [
