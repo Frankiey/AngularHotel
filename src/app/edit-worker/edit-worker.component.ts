@@ -34,7 +34,7 @@ export class EditWorkerComponent implements OnInit {
     let worker = this.workerService.getWorker(id);
     this.index = this.workerService.workers.indexOf(worker);
     this.id = worker.id;
-    this.inputName = worker.name;
+    this.inputName = worker.first_name;
     this.inputRole = worker.role;
     this.inputStartDate = worker.dateFrom;
   }
@@ -42,7 +42,9 @@ export class EditWorkerComponent implements OnInit {
   submit(): void {
     this.workerService.workers[this.index] = {
         id : this.id,
-        name: this.inputName,
+        first_name: this.inputName,
+        last_name: '',
+        avatar: '',
         role: this.inputRole,
         dateFrom: this.inputStartDate
       };

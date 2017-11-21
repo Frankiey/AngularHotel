@@ -9,6 +9,21 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+interface UserList {
+  page: number;
+  per_page: number;
+  total: number;
+  total_pages: number;
+  data: User[];
+}
+
+interface User {
+  id: number;
+  first_name: string;
+  last_name: string;
+  avatar: string;
+}
+
 @Injectable()
 export class WorkerService {
   private reqResUrl = 'https://reqres.in/api/';
@@ -16,39 +31,53 @@ export class WorkerService {
   workers: Worker[];
 
   constructor(private http: HttpClient) {
-    this.workers = [
-      {
-        id: 1,
-        name: 'Jan Janssen',
-        role: 'schoonmaker',
-        dateFrom: new Date(2017, 1)
-      },
-      {
-        id: 2,
-        name: 'Karel Karelssen',
-        role: 'receptionist',
-        dateFrom: new Date(2017, 5)
-      },
-      {
-        id: 3,
-        name: 'Piet Pieterssen',
-        role: 'Kok',
-        dateFrom: new Date(2017, 10)
-      }
-    ];
+    // this.workers = [
+    //   {
+    //     id: 1,
+    //     first_name: 'Jan Janssen',
+    //     last_name: '',
+    //     avatar: '',
+    //     role: 'schoonmaker',
+    //     dateFrom: new Date(2017, 1)
+    //   },
+    //   {
+    //     id: 2,
+    //     first_name: 'Karel Karelssen',
+    //     last_name: '',
+    //     avatar: '',
+    //     role: 'receptionist',
+    //     dateFrom: new Date(2017, 5)
+    //   },
+    //   {
+    //     id: 3,
+    //     first_name: 'Piet Pieterssen',
+    //     last_name: '',
+    //     avatar: '',
+    //     role: 'Kok',
+    //     dateFrom: new Date(2017, 10)
+    //   }
+    // ];
    }
 
 getWorker(id: number): Worker {
   return this.workers.find( x => x.id === id);
 }
 
-getWorkers(): Observable<Worker[]> {
 
-  return this.http.get<Worker[]>(this.reqResUrl + 'users')
-  .pipe(
-    tap(_ => console.log(_)),
-    catchError(this.handleError('getWorkers', []))
-  );
+getWorkers(): void {
+  this.http.get<UserList>(this.reqResUrl + 'users?per_page=999')
+    .pipe(
+      catchError(this.handleError('getWorkers', []))
+    ).subscribe(x => {
+        // Todo check any
+        let userList: UserList =  x as UserList;
+        let users: User[] = userList.data;
+        let workers2: Worker[] = users as Worker[];
+
+        this.workers = workers2;
+        console.log('Message received');
+        console.log(workers2);
+    });
 }
 
 private handleError<T>(operation = 'operation', result?: T) {

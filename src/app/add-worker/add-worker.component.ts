@@ -22,7 +22,9 @@ export class AddWorkerComponent implements OnInit {
   submit(): void {
     this.workerService.workers.push({
         id : this.id,
-        name: this.inputName,
+        first_name: this.inputName,
+        last_name: '',
+        avatar: '',
         role: this.inputRole,
         dateFrom: this.inputStartDate
       });

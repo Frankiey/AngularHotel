@@ -13,11 +13,11 @@
     <th>role</th>
     <th>Date From</th>
   </tr>
-  <tr *ngFor="let worker of workersDisplay">
+  <tr *ngFor="let worker of workerService.workers">
     <td width="25%">{{ worker.id }}    </td>
-    <td width="25%">{{ worker.name }}     </td>
-    <td width="25%">{{ worker.role }}     </td>
-    <td width="25%"> {{worker.dateFrom.getDay()}} / {{worker.dateFrom.getMonth()}} / {{worker.dateFrom.getFullYear()}} </td>
+    <td width="25%">{{ worker.first_name }}     </td>
+    <!-- <td width="25%">{{ worker.role }}     </td>
+    <td width="25%"> {{worker.dateFrom.getDay()}} / {{worker.dateFrom.getMonth()}} / {{worker.dateFrom.getFullYear()}} </td> -->
   </tr>
 </table>
 

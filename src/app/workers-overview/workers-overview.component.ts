@@ -11,23 +11,32 @@ export class WorkersOverviewComponent implements OnInit {
 
   inputName: string;
 
-  workersDisplay;
-  workersTest: Worker[];
+  workers: Worker[];
 
-  constructor(private workerService: WorkerService) {
-    this.workersDisplay = workerService.workers;
+  constructor(public workerService: WorkerService) {
+    // this.workerService.getWorkers();
+    // this.workersDisplay = this.workerService.workers;
    }
 
   ngOnInit() {
     console.log('overview Initied');
-    this.workerService.getWorkers().subscribe(x => this.workersTest = x);
-    console.log(this.workersTest);
+    // this.workerService.getWorkers().subscribe(x => x.);
+    this.workerService.getWorkers();
+  }
+
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   filter(): void {
-    this.workersDisplay = this.workerService.workers;
+    this.workerService.getWorkers();
+    for ( let i = 0; i < 10000; i++) {
+      console.log(i);
+    }
     console.log('filtered');
-    this.workersDisplay = this.workersDisplay.filter(worker => worker.name.includes(this.inputName));
+    this.workerService.workers = this.workerService.workers.filter(worker => worker.first_name.includes(this.inputName));
+    console.log('done filtering');
   }
+
 
 }
