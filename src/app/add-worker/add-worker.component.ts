@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WorkersOverviewComponent } from '../workers-overview/workers-overview.component';
 import { WorkerService } from '../worker.service';
 import { Worker } from '../worker';
+import {} from '../../../node_modules/bootstrap/dist/'
 
 @Component({
   selector: 'app-add-worker',
@@ -15,7 +16,7 @@ export class AddWorkerComponent implements OnInit {
   inputRole: string;
   inputStartDate: Date;
 
-  
+  succesMsg: boolean;
 
   constructor(private workerService: WorkerService) { }
 
@@ -32,7 +33,7 @@ export class AddWorkerComponent implements OnInit {
         dateFrom: this.inputStartDate
       };
       console.log('add created');
-      this.workerService.addWorker(worker).subscribe(x => console.log(`added ${worker.first_name} ${worker.last_name} successfully`));
+      this.workerService.addWorker(worker).subscribe(x => this.succesMsg = true );
   }
 }
 
