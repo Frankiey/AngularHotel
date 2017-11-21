@@ -1,20 +1,28 @@
-<label>Id:
-    <input [(ngModel)]="id" placeholder="id">
-</label>
-<label>name:
-    <input [(ngModel)]="inputFirstName" placeholder="first name">
-</label>
-<label>name:
-    <input [(ngModel)]="inputLastName" placeholder="last name">
-</label>
-<label>name:
-    <input [(ngModel)]="inputRole" placeholder="Role">
-</label>
-<label>name:
-    <input type="date" [(ngModel)]="inputStartDate" placeholder="Date">
-</label>
-
-<button (click)="submit()">Submit</button>
+<div class="row">
+    <div class="col-sm-1"><label>Id:</label></div>
+    <div class="col-sm-2"><input [(ngModel)]="id" placeholder="id"></div>
+</div>
+<div class="row">
+    <div class="col-sm-1"><label>First Name:</label></div>
+    <div class="col-sm-2"><input [(ngModel)]="inputFirstName" placeholder="first name"></div>
+</div>
+<div class="row">
+    <div class="col-sm-1"><label>Last Name:</label></div>
+    <div class="col-sm-2"><input [(ngModel)]="inputLastName" placeholder="last name"></div>
+</div>
+<div class="row">
+    <div class="col-sm-1"><label>Role:</label></div>
+    <div class="col-sm-2"><input [(ngModel)]="inputRole" placeholder="Role"></div>
+</div>
+<div class="row">
+    <div class="col-sm-1"><label>StartDate:</label></div>
+    <div class="col-sm-2"><input type="date" [(ngModel)]="inputStartDate" placeholder="Date"></div>
+</div>
+<div class="row">
+    <div class="col-md-2" align="center">
+        <button (click)="submit()">Submit</button>
+    </div>
+</div>
 <br>
 <br>
 <br>

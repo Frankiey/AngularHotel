@@ -32,7 +32,6 @@ export class AddWorkerComponent implements OnInit {
         role: this.inputRole,
         dateFrom: this.inputStartDate
       };
-      console.log('add created');
       this.workerService.addWorker(worker).subscribe(x => this.succesMsg = true );
   }
 }

@@ -81,8 +81,7 @@ getWorkers(): void {
 }
 addWorker(worker: Worker): Observable<Worker> {
   return this.http.post<Worker>(this.reqResUrl + 'users', httpOptions).pipe(
-    tap((worker: Worker) => console.log(`added hero w/ id=${worker.id}`)),
-    catchError(this.handleError<Worker>('addHero'))
+    catchError(this.handleError<Worker>('addWorker'))
   )
 }
 
