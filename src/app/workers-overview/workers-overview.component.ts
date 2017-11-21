@@ -12,6 +12,7 @@ export class WorkersOverviewComponent implements OnInit {
   inputName: string;
 
   workersDisplay;
+  workersTest: Worker[];
 
   constructor(private workerService: WorkerService) {
     this.workersDisplay = workerService.workers;
@@ -19,6 +20,8 @@ export class WorkersOverviewComponent implements OnInit {
 
   ngOnInit() {
     console.log('overview Initied');
+    this.workerService.getWorkers().subscribe(x => this.workersTest = x);
+    console.log(this.workersTest);
   }
 
   filter(): void {

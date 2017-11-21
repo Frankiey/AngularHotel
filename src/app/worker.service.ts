@@ -63,5 +63,5 @@ private handleError<T>(operation = 'operation', result?: T) {
     // Let the app keep running by returning an empty result.
     return of(result as T);
   };
-
+  }
 }
