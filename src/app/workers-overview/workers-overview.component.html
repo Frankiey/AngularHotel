@@ -16,6 +16,9 @@
   <tr *ngFor="let worker of workers">
     <td width="25%">{{ worker.id }}    </td>
     <td width="25%">{{ worker.first_name }}     </td>
+    <td></td>
+    <td></td>
+    <td> <a href="/editworker/{{ worker.id }}">Edit/Delete</a> </td>
     <!-- <td width="25%">{{ worker.role }}     </td>
     <td width="25%"> {{worker.dateFrom.getDay()}} / {{worker.dateFrom.getMonth()}} / {{worker.dateFrom.getFullYear()}} </td> -->
   </tr>
