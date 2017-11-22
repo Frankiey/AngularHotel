@@ -33,8 +33,8 @@ export class WorkersOverviewComponent implements OnInit {
       this.workers = workers2;
       console.log('Message received');
       console.log(workers2);
-      this.maximumPages = x.total_pages
-      this.pagesArray = new Array(x.total_pages)
+      this.maximumPages = x.total_pages;
+      this.pagesArray = new Array(x.total_pages);
     });
   }
 
