@@ -19,13 +19,10 @@ export class WorkersOverviewComponent implements OnInit {
   workers: Worker[];
 
   constructor(public workerService: WorkerService) {
-    // this.workerService.getWorkers();
-    // this.workersDisplay = this.workerService.workers;
    }
 
   ngOnInit() {
     console.log('overview Initied');
-    // this.workerService.getWorkers().subscribe(x => x.);
     this.workerService.getWorkers().subscribe(x => {
       // Todo check any
       let userList: UserList =  x as UserList;
