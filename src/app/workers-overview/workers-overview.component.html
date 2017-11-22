@@ -27,15 +27,15 @@
           </thead>
           <tbody>
             <tr class="pntr" *ngFor="let worker of workers" (click)="redirectTo(worker.id);">
-              <td width="5%">{{ worker.id }}</td>
-              <td width="10%">{{ worker.first_name }}</td>
-              <td width="10%">{{ worker.last_name }}</td>
-              <td width="10%">
+              <td class="align-baseline" width="5%">{{ worker.id }}</td>
+              <td class="align-baseline" width="10%">{{ worker.first_name }}</td>
+              <td class="align-baseline" width="10%">{{ worker.last_name }}</td>
+              <td class="align-baseline" width="10%">
                 <img width="35%" src="{{ worker.avatar }}">
               </td>
-              <td width="10%"></td>
-              <td width="10%"></td>
-              <td width="10%">
+              <td class="align-baseline" width="10%"></td>
+              <td class="align-baseline" width="10%"></td>
+              <td class="align-baseline" width="10%">
                 <a href="/editworker/{{ worker.id }}">Edit/Delete</a>
               </td>
             </tr>
