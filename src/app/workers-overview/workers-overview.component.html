@@ -1,26 +1,41 @@
 <div>
-    <label>name:
-      <input [(ngModel)]="inputName" placeholder="name">
-    </label>
-    <button (click)="filter();">Search</button>
+  <label>name:
+    <input [(ngModel)]="inputName" placeholder="name">
+  </label>
+  <button (click)="filter();">Search</button>
 </div>
-<button><a href="/addworker">Add</a></button>
+<button>
+  <a href="/addworker">Add</a>
+</button>
 
-<table width="50%">
-  <tr>
-    <th>id</th>
-    <th>first name</th>
-    <th>role</th>
-    <th>Date From</th>
-  </tr>
-  <tr *ngFor="let worker of workers">
-    <td width="25%">{{ worker.id }}    </td>
-    <td width="25%">{{ worker.first_name }}     </td>
-    <td></td>
-    <td></td>
-    <td> <a href="/editworker/{{ worker.id }}">Edit/Delete</a> </td>
-    <!-- <td width="25%">{{ worker.role }}     </td>
-    <td width="25%"> {{worker.dateFrom.getDay()}} / {{worker.dateFrom.getMonth()}} / {{worker.dateFrom.getFullYear()}} </td> -->
-  </tr>
-</table>
-
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <table width="100%">
+      <tr>
+        <th>id</th>
+        <th>first name</th>
+        <th>last name</th>
+        <th>avatar</th>
+        <th>role</th>
+        <th>Date From</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let worker of workers">
+        <td width="5%">{{ worker.id }}</td>
+        <td width="10%">{{ worker.first_name }}</td>
+        <td width="10%">{{ worker.last_name }}</td>
+        <td width="10%">
+          <img src="{{ worker.avatar }}">
+        </td>
+        <td width="10%"></td>
+        <td width="10%"></td>
+        <td width="10%">
+          <a href="/editworker/{{ worker.id }}">Edit/Delete</a>
+        </td>
+        <!-- <td width="25%">{{ worker.role }}     </td>
+        <td width="25%"> {{worker.dateFrom.getDay()}} / {{worker.dateFrom.getMonth()}} / {{worker.dateFrom.getFullYear()}} </td> -->
+      </tr>
+    </table>
+  </div>
+</div>
