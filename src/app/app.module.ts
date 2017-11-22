@@ -9,6 +9,8 @@ import { AddWorkerComponent } from './add-worker/add-worker.component';
 import { AppRoutingModule } from './app-routing.module';
 import { WorkerService } from './worker.service';
 import { EditWorkerComponent } from './edit-worker/edit-worker.component';
+import { FrontPageComponent } from './front-page/front-page.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import { EditWorkerComponent } from './edit-worker/edit-worker.component';
     WorkersOverviewComponent,
     AddWorkerComponent,
     EditWorkerComponent,
+    FrontPageComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
