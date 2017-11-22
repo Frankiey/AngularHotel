@@ -76,10 +76,10 @@ export class WorkersOverviewComponent implements OnInit {
   }
 
   easterEgg(id: number, avatarLink: string): string {
-    if (id === 7) {
+    if (id === 8) {
       return 'http://cultofthepartyparrot.com/assets/sirocco.gif';
     }
-    else if (id === 8) {
+    else if (id === 7) {
       return 'https://scontent-ort2-1.cdninstagram.com/t51.2885-19/s150x150/13117943_467541320111038_278117930_a.jpg';
     }
     else if (id === 9) {
