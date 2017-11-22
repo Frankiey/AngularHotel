@@ -11,6 +11,7 @@ import { UserList, User } from '../Api-types';
 export class WorkersOverviewComponent implements OnInit {
 
   inputName: string;
+  currentPage: number = 1;
 
   workers: Worker[];
 
@@ -52,5 +53,17 @@ export class WorkersOverviewComponent implements OnInit {
     console.log('filtered');
     this.workers = this.workers.filter(worker => worker.first_name.includes(this.inputName));
     console.log('done filtering');
+  }
+  
+
+  pageClick(page: number): void {
+    this.currentPage = page;
+    this.workerService.getWorkers(page).subscribe(x => {
+      let userList: UserList =  x as UserList;
+      let users: User[] = userList.data;
+      let workers2: Worker[] = users as Worker[];
+
+      this.workers = workers2;
+    });
   }
 }

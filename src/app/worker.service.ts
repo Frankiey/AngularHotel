@@ -17,32 +17,6 @@ export class WorkerService {
   workers: Worker[];
 
   constructor(private http: HttpClient) {
-    // this.workers = [
-    //   {
-    //     id: 1,
-    //     first_name: 'Jan Janssen',
-    //     last_name: '',
-    //     avatar: '',
-    //     role: 'schoonmaker',
-    //     dateFrom: new Date(2017, 1)
-    //   },
-    //   {
-    //     id: 2,
-    //     first_name: 'Karel Karelssen',
-    //     last_name: '',
-    //     avatar: '',
-    //     role: 'receptionist',
-    //     dateFrom: new Date(2017, 5)
-    //   },
-    //   {
-    //     id: 3,
-    //     first_name: 'Piet Pieterssen',
-    //     last_name: '',
-    //     avatar: '',
-    //     role: 'Kok',
-    //     dateFrom: new Date(2017, 10)
-    //   }
-    // ];
    }
 
 getWorker(id: number): Observable<SingleUser> {
@@ -55,8 +29,9 @@ getWorker(id: number): Observable<SingleUser> {
 }
 
 
-getWorkers(): Observable<UserList> {
-  return this.http.get<UserList>(this.reqResUrl + 'users?per_page=999')
+
+getWorkers(page: number = 1): Observable<UserList> {
+  return this.http.get<UserList>(this.reqResUrl + `users?per_page=5&page=${page}`)
     .pipe(
       catchError(this.handleError<UserList>('getWorkers'))
     );
