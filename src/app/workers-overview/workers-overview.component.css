@@ -1,4 +1,8 @@
 .custom {
     width: 78px;
-    text-align: center;    
+    text-align: center;
+}
+
+.pntr {
+  cursor: pointer
 }

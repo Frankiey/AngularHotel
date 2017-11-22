@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Worker } from '../worker';
 import { WorkerService } from '../worker.service';
 import { UserList, User } from '../Api-types';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-workers-overview',
@@ -15,7 +16,7 @@ export class WorkersOverviewComponent implements OnInit {
 
   workers: Worker[];
 
-  constructor(public workerService: WorkerService) {
+  constructor(public workerService: WorkerService, private router: Router) {
     // this.workerService.getWorkers();
     // this.workersDisplay = this.workerService.workers;
    }
@@ -54,7 +55,7 @@ export class WorkersOverviewComponent implements OnInit {
     this.workers = this.workers.filter(worker => worker.first_name.includes(this.inputName));
     console.log('done filtering');
   }
-  
+
 
   pageClick(page: number): void {
     this.currentPage = page;
@@ -65,5 +66,10 @@ export class WorkersOverviewComponent implements OnInit {
 
       this.workers = workers2;
     });
+  }
+
+  redirectTo(id: number) {
+    this.router.navigateByUrl('editworker/' + id);
+    console.log(id);
   }
 }

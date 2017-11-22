@@ -13,7 +13,7 @@
 <div class="container-fluid">
 <div class="row">
   <div class="table-responsive">
-    <table class="table table-striped" width="100%">
+    <table class="table table-striped table-hover" width="100%">
       <thead>
         <tr>
           <th>id</th>
@@ -26,7 +26,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let worker of workers">
+        <tr class="pntr" *ngFor="let worker of workers" (click)="redirectTo(worker.id);">
           <td width="5%">{{ worker.id }}</td>
           <td width="10%">{{ worker.first_name }}</td>
           <td width="10%">{{ worker.last_name }}</td>
