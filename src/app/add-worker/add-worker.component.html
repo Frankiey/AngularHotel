@@ -1,57 +1,48 @@
-<div class="row">
-    <div class="col-sm-1">
-        <label>Id:</label>
+<main>
+<form class="container">
+    <h2 class="display-4">Werknemer Toevoegen</h2>
+    <div class="form-group">
+      <label for="id">Id</label>
+      <input [(ngModel)]="id" class="form-control" id="id" aria-describedby="id" placeholder="Enter id">
     </div>
-    <div class="col-sm-2">
-        <input [(ngModel)]="id" placeholder="id">
+    <div class="form-group">
+      <label for="firstName">Voornaam</label>
+      <input [(ngModel)]="inputFirstName" class="form-control" id="firstName" placeholder="Voornaam">
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-1">
-        <label>First Name:</label>
+    <div class="form-group">
+        <label for="lastName">Achternaam</label>
+        <input  [(ngModel)]="inputLastName" class="form-control" id="lastName" placeholder="Achternaam">
     </div>
-    <div class="col-sm-2">
-        <input [(ngModel)]="inputFirstName" placeholder="first name">
+    <div class="form-group">
+        <label for="role">Role</label>
+        <input [(ngModel)]="inputRole" class="form-control" id="role" placeholder="Role">
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-1">
-        <label>Last Name:</label>
+    <div>
+      <label for="role">Rol</label>
+      <select [(ngModel)]="inputRole" class="custom-select d-block my-3" required>
+          <option value="">Selecteer een rol</option>
+          <option value="Schoonmaker">Schoonmaker</option>
+          <option value="Manager">Manager</option>
+          <option value="Receptionist">Receptionist</option>
+          <option value="Kok">Kok</option>
+        </select>
     </div>
-    <div class="col-sm-2">
-        <input [(ngModel)]="inputLastName" placeholder="last name">
+
+    <div class="form-group">
+        <label for="startDate">Start Datum</label>
+        <input [(ngModel)]="inputRole" type="date" class="form-control" id="startDate" placeholder="Start Date">
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-1">
-        <label>Role:</label>
+
+    <div *ngIf="succesMsg" class="alert alert-success alert-dismissable">
+        <a href="/overview" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Success!</strong>
+        <br> Als u dit bericht sluit gaat u terug naar het werknemers overzicht.
     </div>
-    <div class="col-sm-2">
-        <input [(ngModel)]="inputRole" placeholder="Role">
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-1">
-        <label>StartDate:</label>
-    </div>
-    <div class="col-sm-2">
-        <input type="date" [(ngModel)]="inputStartDate" placeholder="Date">
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-2" align="center">
-        <button (click)="submit()">Submit</button>
-    </div>
-</div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div *ngIf="succesMsg" class="alert alert-success alert-dismissable">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong>Success!</strong>
-    <br> closing this message sets you back to the main page
-</div>
+
+    <button (click)="submit()" class="btn btn-primary">Verzend</button>
+
+
+  </form>
+
+
+</main>
