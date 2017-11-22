@@ -9,9 +9,12 @@ import { UserList, User } from '../Api-types';
   styleUrls: ['./workers-overview.component.css']
 })
 export class WorkersOverviewComponent implements OnInit {
+  pagesArray: any[];
 
   inputName: string;
+
   currentPage: number = 1;
+  maximumPages: number;
 
   workers: Worker[];
 
@@ -32,6 +35,8 @@ export class WorkersOverviewComponent implements OnInit {
       this.workers = workers2;
       console.log('Message received');
       console.log(workers2);
+      this.maximumPages = x.total_pages
+      this.pagesArray = new Array(x.total_pages)
     });
   }
 
@@ -65,5 +70,5 @@ export class WorkersOverviewComponent implements OnInit {
 
       this.workers = workers2;
     });
-  }
+  } 
 }

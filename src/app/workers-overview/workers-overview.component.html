@@ -1,65 +1,66 @@
 <main class="container">
-<div>
-  <label>
-    <input type="search" [(ngModel)]="inputName" class="form-control mr-sm-2" placeholder="name">
-  </label>
-  <button (click)="filter();" class="btn btn-outline-success my-2 my-sm-0">Search</button>
-</div>
-
-<div class="fixed-right">
-<a role="button" class="btn btn-primary" href="/addworker">Add</a>
-</div>
-
-<div class="container-fluid">
-<div class="row">
-  <div class="table-responsive">
-    <table class="table table-striped" width="100%">
-      <thead>
-        <tr>
-          <th>id</th>
-          <th>first name</th>
-          <th>last name</th>
-          <th>avatar</th>
-          <th>role</th>
-          <th>Date From</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let worker of workers">
-          <td width="5%">{{ worker.id }}</td>
-          <td width="10%">{{ worker.first_name }}</td>
-          <td width="10%">{{ worker.last_name }}</td>
-          <td width="10%">
-            <img width="35%" src="{{ worker.avatar }}">
-          </td>
-          <td width="10%"></td>
-          <td width="10%"></td>
-          <td width="10%">
-            <a href="/editworker/{{ worker.id }}">Edit/Delete</a>
-          </td>
-          <!-- <td width="25%">{{ worker.role }}     </td>
-        <td width="25%"> {{worker.dateFrom.getDay()}} / {{worker.dateFrom.getMonth()}} / {{worker.dateFrom.getFullYear()}} </td> -->
-        </tr>
-      </tbody>
-    </table>
+  <div>
+    <label>
+      <input type="search" [(ngModel)]="inputName" class="form-control mr-sm-2" placeholder="name">
+    </label>
+    <button (click)="filter();" class="btn btn-outline-success my-2 my-sm-0">Search</button>
   </div>
-</div>
-<br>
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item" [ngClass]="{'active': currentPage === 1}">
-      <a class="page-link custom" (click)="pageClick(1);">1</a>
-    </li>
-    <li class="page-item" [ngClass]="{'active': currentPage === 2}">
-      <a class="page-link custom" (click)="pageClick(2);">2</a>
-    </li>
-    <li class="page-item" [ngClass]="{'active': currentPage === 3}">
-      <a class="page-link custom" (click)="pageClick(3);">3</a>
-    </li>
-  </ul>
-</nav>
 
-</div>
+  <div class="fixed-right">
+    <a role="button" class="btn btn-primary" href="/addworker">Add</a>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table table-striped" width="100%">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>first name</th>
+              <th>last name</th>
+              <th>avatar</th>
+              <th>role</th>
+              <th>Date From</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let worker of workers">
+              <td width="5%">{{ worker.id }}</td>
+              <td width="10%">{{ worker.first_name }}</td>
+              <td width="10%">{{ worker.last_name }}</td>
+              <td width="10%">
+                <img width="35%" src="{{ worker.avatar }}">
+              </td>
+              <td width="10%"></td>
+              <td width="10%"></td>
+              <td width="10%">
+                <a href="/editworker/{{ worker.id }}">Edit/Delete</a>
+              </td>
+              <!-- <td width="25%">{{ worker.role }}     </td>
+        <td width="25%"> {{worker.dateFrom.getDay()}} / {{worker.dateFrom.getMonth()}} / {{worker.dateFrom.getFullYear()}} </td> -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [ngClass]="{'disabled': currentPage === 1}">
+          <a class="page-link customTwo" (click)="pageClick((currentPage-1));">Vorige</a>
+        </li>
+
+            <li *ngFor="let page of pagesArray; index as i" class="page-item" [ngClass]="{'active': currentPage === i+1}">
+              <a class="page-link custom" (click)="pageClick(i+1);">{{i+1}}</a>
+            </li>
+
+        <li class="page-item" [ngClass]="{'disabled': currentPage === maximumPages}">
+          <a class="page-link customTwo" (click)="pageClick(currentPage+1);">Volgende</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </main>
 

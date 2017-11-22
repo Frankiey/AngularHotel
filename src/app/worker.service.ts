@@ -31,7 +31,7 @@ getWorker(id: number): Observable<SingleUser> {
 
 
 getWorkers(page: number = 1): Observable<UserList> {
-  return this.http.get<UserList>(this.reqResUrl + `users?per_page=5&page=${page}`)
+  return this.http.get<UserList>(this.reqResUrl + `users?per_page=3&page=${page}`)
     .pipe(
       catchError(this.handleError<UserList>('getWorkers'))
     );
