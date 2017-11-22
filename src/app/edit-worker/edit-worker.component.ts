@@ -18,7 +18,9 @@ export class EditWorkerComponent implements OnInit {
   inputLastName: string;
   inputRole: string;
   inputStartDate: Date;
+  inputAvatar: string;
 
+  deleted = false;
   index: number;
 
   successDelete: boolean;
@@ -40,20 +42,24 @@ export class EditWorkerComponent implements OnInit {
       let user: User = x.data;
       this.fillFields(user);
     });
-
-
   }
 
-  fillFields(user: User) {
+  fillFields(user: User): void {
     // this.index = this.workerService.workers.indexOf(worker);
     this.id = user.id;
     this.inputFirstName = user.first_name;
     this.inputLastName = user.last_name;
-    this.inputRole = 'schoonmaker';
+    this.inputRole = 'Schoonmaker';
     this.inputStartDate = undefined;
+    this.inputAvatar = user.avatar;
+
+    console.log('fields filled');
   }
 
   submit(): void {
+    if (this.deleted) {
+     return;
+    }
     let worker: Worker = {
       id: this.id,
       first_name: this.inputFirstName,
@@ -64,7 +70,7 @@ export class EditWorkerComponent implements OnInit {
     };
 
     this.workerService.updateWorker(worker).subscribe(x =>  {
-      this.successEdit = true; 
+      this.successEdit = true;
       console.log(x);
     });
   }
@@ -73,6 +79,7 @@ export class EditWorkerComponent implements OnInit {
     this.workerService.deleteWorker(this.id).subscribe(x => {
       this.successDelete = true;
       console.log('Deleted');
+      this.deleted = true;
     });
   }
 }

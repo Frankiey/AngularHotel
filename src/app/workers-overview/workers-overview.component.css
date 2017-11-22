@@ -1,6 +1,6 @@
 .custom {
     width: 40px;
-    text-align: center;    
+    text-align: center;
 }
 
 .customTwo {
@@ -9,3 +9,7 @@
 }
 
 li {cursor: pointer}
+
+.pntr {
+  cursor: pointer
+}
