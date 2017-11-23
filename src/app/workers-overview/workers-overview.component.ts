@@ -74,4 +74,17 @@ export class WorkersOverviewComponent implements OnInit {
     this.router.navigateByUrl('editworker/' + id);
     console.log(id);
   }
+
+  easterEgg(id: number, avatarLink: string): string {
+    if (id === 8) {
+      return 'http://cultofthepartyparrot.com/assets/sirocco.gif';
+    }
+    else if (id === 7) {
+      return 'https://scontent-ort2-1.cdninstagram.com/t51.2885-19/s150x150/13117943_467541320111038_278117930_a.jpg';
+    }
+    else if (id === 9) {
+      return 'https://thumbs.gfycat.com/IndelibleAliveAmericancrow-max-1mb.gif';
+    }
+    return avatarLink;
+  }
 }

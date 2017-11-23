@@ -39,18 +39,18 @@
 
     <div *ngIf="successDelete" class="alert alert-success alert-dismissable">
       <a href="/overview" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>Successfully deleted!</strong>
-      <br> closing this message sets you back to the main page
+      <strong>Successvol verwijderd!</strong>
+      <br> Als u dit bericht sluit gaat u terug naar het werknemers overzicht.
     </div>
 
     <div *ngIf="successEdit" class="alert alert-success alert-dismissable">
       <a href="/overview" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong>Successfully edited!</strong>
-      <br> closing this message sets you back to the main page
+      <strong>Successvol gewijzigd!</strong>
+      <br> Als u dit bericht sluit gaat u terug naar het werknemers overzicht.
     </div>
 
 
-    <button (click)="submit()" class="btn btn-primary" [ngClass]="{'disabled' : deleted}">Verzend</button>
+    <button (click)="submit()" class="btn btn-primary" [ngClass]="{'disabled' : deleted}">Wijzig</button>
     <button (click)="delete()" class="btn btn-primary">Verwijder</button>
 
 
