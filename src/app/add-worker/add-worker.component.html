@@ -32,13 +32,13 @@
         <input name="startDate" ng-model="inputStartDate" type="date" class="form-control" id="startDate" placeholder="Start Date">
     </div>
 
-    <div *ngIf="succesMsg" class="alert alert-success alert-dismissable">
+    <div *ngIf="succesMsg" class="alert alert-success alert-dismissable" id="addSuccess">
         <a href="/overview" class="close" data-dismiss="alert" aria-label="close" (click)="redirectTo()">&times;</a>
         <strong>Gelukt!</strong>
         <br> Als u dit bericht sluit gaat u terug naar het werknemers overzicht.
     </div>
 
-    <button (click)="submit()" class="btn btn-primary">Toevoegen</button>
+    <button id="addWorker" (click)="submit()" class="btn btn-primary">Toevoegen</button>
 
 
   </form>
