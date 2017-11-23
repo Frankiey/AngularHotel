@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 
 import { EditWorkerComponent } from './edit-worker.component';
 
@@ -21,5 +21,9 @@ describe('EditWorkerComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should show ID 1', () => {
+    expect(component.id).toBe(undefined);
   });
 });
