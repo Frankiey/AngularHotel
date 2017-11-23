@@ -6,20 +6,20 @@
     </div>
     <div class="form-group">
       <label for="id">Id</label>
-      <input name="id" ng-model="id" class="form-control" id="id" aria-describedby="id" placeholder="Enter id" disabled>
+      <input name="id" [(ngModel)]="id" class="form-control" id="id" aria-describedby="id" placeholder="Enter id" disabled>
     </div>
     <div class="form-group">
       <label for="firstName">Voornaam</label>
-      <input name="inputFirstName" ng-model="inputFirstName" class="form-control" id="firstName" placeholder="Voornaam">
+      <input name="inputFirstName" [(ngModel)]="inputFirstName" class="form-control" id="firstName" placeholder="Voornaam">
     </div>
     <div class="form-group">
       <label for="lastName">Achternaam</label>
-      <input name="inputLastName" ng-model="inputLastName" class="form-control" id="lastName" placeholder="Achternaam">
+      <input name="inputLastName" [(ngModel)]="inputLastName" class="form-control" id="lastName" placeholder="Achternaam">
     </div>
 
     <div>
       <label for="role">Rol</label>
-      <select name="inputRole" ng-model="inputRole" class="custom-select d-block my-3" required>
+      <select name="inputRole" [(ngModel)]="inputRole" class="custom-select d-block my-3" required>
         <option value="">Selecteer een rol</option>
         <option value="Schoonmaker">Schoonmaker</option>
         <option value="Assistent manager">Assistent manager</option>
@@ -33,7 +33,7 @@
 
     <div class="form-group">
       <label for="startDate">Start Datum</label>
-      <input name="inputStartDate" ng-model="inputStartDate" type="date" class="form-control" id="startDate" placeholder="Start Date" disabled>
+      <input name="inputStartDate" [(ngModel)]="inputStartDate" type="date" class="form-control" id="startDate" placeholder="Start Date" disabled>
     </div>
 
 
