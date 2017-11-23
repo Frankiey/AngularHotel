@@ -3,19 +3,19 @@
     <h2 class="display-4">Werknemer Toevoegen</h2>
     <div class="form-group">
       <label for="id">Id</label>
-      <input name="id" [(ngModel)]="id" class="form-control" id="id" aria-describedby="id" placeholder="Enter id">
+      <input name="id" ng-model="id" class="form-control" id="id" aria-describedby="id" placeholder="Enter id">
     </div>
     <div class="form-group">
       <label for="firstName">Voornaam</label>
-      <input name="firstName" [(ngModel)]="inputFirstName" class="form-control" id="firstName" placeholder="Voornaam">
+      <input name="firstName" ng-model="inputFirstName" class="form-control" id="firstName" placeholder="Voornaam">
     </div>
     <div class="form-group">
         <label for="lastName">Achternaam</label>
-        <input name="lastName" [(ngModel)]="inputLastName" class="form-control" id="lastName" placeholder="Achternaam">
+        <input name="lastName" ng-model="inputLastName" class="form-control" id="lastName" placeholder="Achternaam">
     </div>
     <div>
       <label for="role">Rol</label>
-      <select name="role" [(ngModel)]="inputRole" class="custom-select d-block my-3" required>
+      <select name="role" ng-model="inputRole" class="custom-select d-block my-3" required>
           <option value="">Selecteer een rol</option>
           <option value="Schoonmaker">Schoonmaker</option>
           <option value="Manager">Manager</option>
@@ -26,7 +26,7 @@
 
     <div class="form-group">
         <label for="startDate">Start Datum</label>
-        <input name="startDate" [(ngModel)]="inputStartDate" type="date" class="form-control" id="startDate" placeholder="Start Date">
+        <input name="startDate" ng-model="inputStartDate" type="date" class="form-control" id="startDate" placeholder="Start Date">
     </div>
 
     <div *ngIf="succesMsg" class="alert alert-success alert-dismissable">
