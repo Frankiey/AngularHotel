@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
+import { NavbarComponent } from './navbar/navbar.component';
 
+@NgModule({
+  imports: [NavbarComponent]
+})
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
