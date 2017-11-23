@@ -52,6 +52,10 @@ export class AppPage {
     return element.all(by.css('tbody tr'));
   }
 
+  getPage2() {
+    return element(by.css('ul li:nth-child(3) a'));
+  }
+
   getFirstIdofRow() {
     return element(by.css('tbody tr:first-child td:first-child'));
   }

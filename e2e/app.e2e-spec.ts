@@ -9,7 +9,7 @@ describe('angular-fancy-hotel App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welkom op het werknemers portaal van hotel fancypants');
+    expect(page.getParagraphText()).toEqual('Welkom op het werknemers portaal van Saint-Nicolas Lake Resort');
   });
 
   it('should display welcome message', () => {
@@ -47,5 +47,11 @@ describe('angular-fancy-hotel App', () => {
   it('checks if table contains id 1 as first id', () => {
     page.navigateToOverview();
     expect(page.getFirstIdofRow().getText()).toEqual('1');
+  });
+
+  it('checks if test is able to navigate to page 2 and table contains id 4 as first id in the row', () => {
+    page.navigateToOverview();
+    page.getPage2().click();
+    expect(page.getFirstIdofRow().getText()).toEqual('4');
   });
 });
