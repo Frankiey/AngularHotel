@@ -1,11 +1,22 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { WorkerService } from './worker.service';
+import { HttpClient } from '@angular/common/http';
+import { HttpHandler } from '@angular/common/http';
 
 describe('WorkerService', () => {
   beforeEach(() => {
+    let WorkerServiceStub = {
+    };
+
+    let HttpClientStub = {
+    };
+
     TestBed.configureTestingModule({
-      providers: [WorkerService]
+        providers: [
+        {provide: WorkerService, useValue: WorkerServiceStub },
+        {provide: HttpClient, useValue: HttpClientStub }
+       ]
     });
   });
 
