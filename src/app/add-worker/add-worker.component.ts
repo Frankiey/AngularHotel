@@ -3,6 +3,7 @@ import { WorkersOverviewComponent } from '../workers-overview/workers-overview.c
 import { WorkerService } from '../worker.service';
 import { Worker } from '../worker';
 import {} from '../../../node_modules/bootstrap/dist/'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-worker',
@@ -18,7 +19,7 @@ export class AddWorkerComponent implements OnInit {
 
   succesMsg: boolean;
 
-  constructor(private workerService: WorkerService) { }
+  constructor(private workerService: WorkerService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -33,6 +34,11 @@ export class AddWorkerComponent implements OnInit {
         dateFrom: this.inputStartDate
       };
       this.workerService.addWorker(worker).subscribe(x => this.succesMsg = true );
+  }
+
+  redirectTo() {
+    this.router.navigateByUrl('/overview');
+    console.log('redirected');
   }
 }
 

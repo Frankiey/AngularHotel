@@ -38,13 +38,13 @@
 
 
     <div *ngIf="successDelete" class="alert alert-success alert-dismissable">
-      <a href="/overview" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <a href="/overview" class="close" data-dismiss="alert" aria-label="close" (click)="redirectTo()">&times;</a>
       <strong>Successvol verwijderd!</strong>
       <br> Als u dit bericht sluit gaat u terug naar het werknemers overzicht.
     </div>
 
     <div *ngIf="successEdit" class="alert alert-success alert-dismissable">
-      <a href="/overview" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <a href="/overview" class="close" data-dismiss="alert" aria-label="close" (click)="redirectTo()">&times;</a>
       <strong>Successvol gewijzigd!</strong>
       <br> Als u dit bericht sluit gaat u terug naar het werknemers overzicht.
     </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { WorkerService } from '../worker.service';
 import { Worker } from '../worker';
@@ -29,7 +29,8 @@ export class EditWorkerComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private workerService: WorkerService
+    private workerService: WorkerService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -81,5 +82,10 @@ export class EditWorkerComponent implements OnInit {
       console.log('Deleted');
       this.deleted = true;
     });
+  }
+
+  redirectTo() {
+    this.router.navigateByUrl('/overview');
+    console.log('redirected');
   }
 }
