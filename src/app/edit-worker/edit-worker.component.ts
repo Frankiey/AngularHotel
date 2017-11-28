@@ -65,7 +65,6 @@ export class EditWorkerComponent implements OnInit {
       id: this.id,
       first_name: this.inputFirstName,
       last_name: this.inputLastName,
-      avatar: '',
       role: this.inputRole,
       startDate: this.inputStartDate
     };

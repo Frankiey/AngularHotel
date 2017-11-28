@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WorkersOverviewComponent } from '../workers-overview/workers-overview.component';
 import { WorkerService } from '../worker.service';
 import { Worker } from '../worker';
-import {} from '../../../node_modules/bootstrap/dist/'
+import {} from '../../../node_modules/bootstrap/dist/';
 import { Router } from '@angular/router';
 
 @Component({
@@ -29,7 +29,6 @@ export class AddWorkerComponent implements OnInit {
         id : this.id,
         first_name: this.inputFirstName,
         last_name: this.inputLastName,
-        avatar: '',
         role: this.inputRole,
         startDate: this.inputStartDate
       };
