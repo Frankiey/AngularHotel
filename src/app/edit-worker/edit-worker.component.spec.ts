@@ -43,18 +43,15 @@ describe('EditWorkerComponent', () => {
         {provide: Router, useValue: routerStub }
        ]
     });
-    //.compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(EditWorkerComponent);
     component = fixture.componentInstance;
-   // fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
-    //expect(component).toBeTruthy();
   });
 
   it('Input field properties should be undefined or default', () => {

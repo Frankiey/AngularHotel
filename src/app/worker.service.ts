@@ -12,7 +12,7 @@ const httpOptions = {
 
 @Injectable()
 export class WorkerService {
-  private reqResUrl = 'https://reqres.in/api/';
+  private reqResUrl = 'http://localhost:8080/api/';
 
   workers: Worker[];
 
