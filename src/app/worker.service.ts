@@ -49,12 +49,18 @@ export class WorkerService {
     );
   }
 
-  getStandardSchedule(id: number = 1): Observable<StandardSchedule> {
+  getStandardSchedule(id: number): Observable<StandardSchedule> {
     // todo fix route
     return this.http.get<StandardSchedule>(this.reqResUrl + `users/` + id)
       .pipe(
       catchError(this.handleError<StandardSchedule>('Get standard schedule'))
       );
+  }
+
+  updateStandardSchedule(schedule: StandardSchedule): Observable<any[] |StandardSchedule> {
+    return this.http.put<StandardSchedule>(this.reqResUrl + 'users/' + schedule.id, schedule, httpOptions).pipe(
+      catchError(this.handleError('update Standard Schedule', []))
+    );
   }
 
 

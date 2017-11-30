@@ -10,7 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class StandardScheduleComponent implements OnInit {
 
+  public updateMsg = '';
   public schedule: StandardSchedule = {
+    id: 1,
     monday: {
       morning: true,
       afternoon: true,
@@ -72,6 +74,16 @@ export class StandardScheduleComponent implements OnInit {
       this.workerService.getStandardSchedule(id).subscribe( x => {
           this.schedule = x;
       });
+  }
+
+  submit(): void {
+    this.workerService.updateStandardSchedule(this.schedule).subscribe( x => {
+      this.showUpdateMessage();
+    });
+  }
+
+  showUpdateMessage(): void {
+    this.updateMsg += 'Het rooster is opgeslagen!';
   }
 
 }

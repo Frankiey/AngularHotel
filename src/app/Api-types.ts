@@ -1,9 +1,12 @@
 export interface UserList {
-  page: number;
-  per_page: number;
-  total: number;
-  total_pages: number;
-  data: User[];
+  content: User[];
+  last: boolean;
+  totalElemens: number;
+  totalPages: number;
+  size: number;
+  first: boolean;
+  sort: any;
+  numberOfElements: number;
 }
 
 export interface SingleUser {
@@ -12,13 +15,15 @@ export interface SingleUser {
 
 export interface User {
   id: number;
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  startDate: number[];
   role: string;
-  startDate: Date;
 }
 
 export interface StandardSchedule {
+  id: number;
   monday: DayShifts;
   tuesday: DayShifts;
   wednesday: DayShifts;
