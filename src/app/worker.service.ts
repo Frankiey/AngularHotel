@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
-import { UserList, SingleUser, User } from './Api-types';
+import { UserList, SingleUser, User, StandardSchedule } from './Api-types';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,8 +24,6 @@ export class WorkerService {
       catchError(this.handleError<SingleUser>('getWorker'))
     );
   }
-
-
 
   getWorkers(page: number = 1): Observable<UserList> {
     return this.http.get<UserList>(this.reqResUrl + `users?per_page=3&page=${page}`)
@@ -49,6 +47,14 @@ export class WorkerService {
     return this.http.post<Worker>(this.reqResUrl + 'users', httpOptions).pipe(
       catchError(this.handleError<Worker>('addWorker'))
     );
+  }
+
+  getStandardSchedule(id: number = 1): Observable<StandardSchedule> {
+    // todo fix route
+    return this.http.get<StandardSchedule>(this.reqResUrl + `users/` + id)
+      .pipe(
+      catchError(this.handleError<StandardSchedule>('Get standard schedule'))
+      );
   }
 
 

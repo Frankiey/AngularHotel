@@ -17,3 +17,20 @@ export interface User {
   role: string;
   startDate: Date;
 }
+
+export interface StandardSchedule {
+  monday: DayShifts;
+  tuesday: DayShifts;
+  wednesday: DayShifts;
+  thursday: DayShifts;
+  friday: DayShifts;
+  saturday: DayShifts;
+  sunday: DayShifts;
+}
+
+export interface DayShifts {
+  morning: boolean;
+  afternoon: boolean;
+  evening: boolean;
+  night: boolean;
+}

@@ -11,6 +11,7 @@ import { WorkerService } from './worker.service';
 import { EditWorkerComponent } from './edit-worker/edit-worker.component';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { StandardScheduleComponent } from './standard-schedule/standard-schedule.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     EditWorkerComponent,
     FrontPageComponent,
     NavbarComponent,
+    StandardScheduleComponent,
   ],
   imports: [
     BrowserModule,
