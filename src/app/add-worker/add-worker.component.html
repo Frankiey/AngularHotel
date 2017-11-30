@@ -7,15 +7,15 @@
     </div> -->
     <div class="form-group">
       <label for="firstName">Voornaam</label>
-      <input name="firstName" ng-model="inputFirstName" class="form-control" id="firstName" placeholder="Voornaam">
+      <input name="firstName" [(ngModel)]="inputFirstName" class="form-control" id="firstName" placeholder="Voornaam">
     </div>
     <div class="form-group">
         <label for="lastName">Achternaam</label>
-        <input name="lastName" ng-model="inputLastName" class="form-control" id="lastName" placeholder="Achternaam">
+        <input name="lastName" [(ngModel)]="inputLastName" class="form-control" id="lastName" placeholder="Achternaam">
     </div>
     <div>
       <label for="role">Rol</label>
-      <select name="role" ng-model="inputRole" class="custom-select d-block my-3" required>
+      <select name="role" [(ngModel)]="inputRole" class="custom-select d-block my-3" required>
           <option value="">Selecteer een rol</option>
           <option value="Schoonmaker">Schoonmaker</option>
           <option value="Assistent manager">Assistent manager</option>
@@ -29,7 +29,7 @@
 
     <div class="form-group">
         <label for="startDate">Start Datum</label>
-        <input name="startDate" ng-model="inputStartDate" type="date" class="form-control" id="startDate" placeholder="Start Date">
+        <input name="startDate" [(ngModel)]="inputStartDate" type="date" class="form-control" id="startDate" placeholder="Start Date">
     </div>
 
     <div *ngIf="succesMsg" class="alert alert-success alert-dismissable" id="addSuccess">

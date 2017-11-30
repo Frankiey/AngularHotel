@@ -15,7 +15,7 @@ export class AddWorkerComponent implements OnInit {
   inputFirstName: string;
   inputLastName: string;
   inputRole: string;
-  inputStartDate: Date;
+  inputStartDate: string;
 
   succesMsg: boolean;
 
@@ -27,14 +27,22 @@ export class AddWorkerComponent implements OnInit {
 
   submit(): void {
 
+    let splitDate : string[] = this.inputStartDate.split("-");
+
+    console.log(this.inputFirstName);
+    console.log(this.inputLastName);
+    console.log(this.inputRole);
+    console.log(this.inputStartDate);
+    console.log([Number(splitDate[0]), Number(splitDate[1].valueOf()), Number(splitDate[2])]);
+
     let worker: Worker = {
       id : 0,
       firstName: this.inputFirstName,
       lastName: this.inputLastName,
       role: this.inputRole,
-      startDate: [this.inputStartDate.getFullYear(), this.inputStartDate.getMonth(), this.inputStartDate.getDay()]
+      startDate: [Number(splitDate[0]), Number(splitDate[1].valueOf()), Number(splitDate[2])]
     };
-      this.workerService.addWorker(worker).subscribe(x => this.succesMsg = true );
+    this.workerService.addWorker(worker).subscribe(x => this.succesMsg = true );
   }
 
   redirectTo() {
