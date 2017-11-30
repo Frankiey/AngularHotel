@@ -28,8 +28,8 @@
           <tbody>
             <tr class="pntr" *ngFor="let worker of workers" (click)="redirectTo(worker.id);">
               <td class="align-baseline" width="5%">{{ worker.id }}</td>
-              <td class="align-baseline" width="10%">{{ worker.first_name }}</td>
-              <td class="align-baseline" width="10%">{{ worker.last_name }}</td>
+              <td class="align-baseline" width="10%">{{ worker.firstName }}</td>
+              <td class="align-baseline" width="10%">{{ worker.lastName }}</td>
               <td class="align-baseline" width="10%">
                 <img width="50%" src="{{easterEgg(worker.id, worker.avatar)}}">
               </td>
