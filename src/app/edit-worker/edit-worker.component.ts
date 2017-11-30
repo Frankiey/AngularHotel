@@ -48,8 +48,8 @@ export class EditWorkerComponent implements OnInit {
   fillFields(user: User): void {
     // this.index = this.workerService.workers.indexOf(worker);
     this.id = user.id;
-    this.inputFirstName = user.first_name;
-    this.inputLastName = user.last_name;
+    this.inputFirstName = user.firstName;
+    this.inputLastName = user.lastName;
     this.inputRole = 'Schoonmaker';
     this.inputStartDate = undefined;
 
@@ -62,10 +62,10 @@ export class EditWorkerComponent implements OnInit {
     }
     let worker: Worker = {
       id: this.id,
-      first_name: this.inputFirstName,
-      last_name: this.inputLastName,
+      firstName: this.inputFirstName,
+      lastName: this.inputLastName,
       role: this.inputRole,
-      startDate: this.inputStartDate
+      startDate: [this.inputStartDate.getFullYear(), this.inputStartDate.getMonth(), this.inputStartDate.getDay()]
     };
 
     this.workerService.updateWorker(worker).subscribe(x =>  {
