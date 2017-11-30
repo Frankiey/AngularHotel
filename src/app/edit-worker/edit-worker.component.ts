@@ -65,7 +65,7 @@ export class EditWorkerComponent implements OnInit {
       firstName: this.inputFirstName,
       lastName: this.inputLastName,
       role: this.inputRole,
-      startDate: [this.inputStartDate.getFullYear, this.inputStartDate.getMonth, this.inputStartDate.getDay]
+      startDate: [this.inputStartDate.getFullYear(), this.inputStartDate.getMonth(), this.inputStartDate.getDay()]
     };
 
     this.workerService.updateWorker(worker).subscribe(x =>  {
