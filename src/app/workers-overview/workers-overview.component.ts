@@ -27,14 +27,14 @@ export class WorkersOverviewComponent implements OnInit {
     this.workerService.getWorkers().subscribe(x => {
       // Todo check any
       let userList: UserList =  x as UserList;
-      let users: User[] = userList.data;
+      let users: User[] = userList.content;
       let workers2: Worker[] = users as Worker[];
 
       this.workers = workers2;
       console.log('Message received');
       console.log(workers2);
-      this.maximumPages = x.total_pages;
-      this.pagesArray = new Array(x.total_pages);
+      this.maximumPages = x.totalPages;
+      this.pagesArray = new Array(x.totalPages);
     });
   }
 
@@ -42,7 +42,7 @@ export class WorkersOverviewComponent implements OnInit {
     this.workerService.getWorkers().subscribe(x => {
       // Todo check any
       let userList: UserList =  x as UserList;
-      let users: User[] = userList.data;
+      let users: User[] = userList.content;
       let workers2: Worker[] = users as Worker[];
 
       this.workers = workers2;
@@ -54,7 +54,7 @@ export class WorkersOverviewComponent implements OnInit {
 
   filterWorkers(): void {
     console.log('filtered');
-    this.workers = this.workers.filter(worker => worker.first_name.includes(this.inputName));
+    this.workers = this.workers.filter(worker => worker.firstName.includes(this.inputName));
     console.log('done filtering');
   }
 
@@ -63,7 +63,7 @@ export class WorkersOverviewComponent implements OnInit {
     this.currentPage = page;
     this.workerService.getWorkers(page).subscribe(x => {
       let userList: UserList =  x as UserList;
-      let users: User[] = userList.data;
+      let users: User[] = userList.content;
       let workers2: Worker[] = users as Worker[];
 
       this.workers = workers2;
