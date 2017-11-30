@@ -22,16 +22,18 @@ export class AddWorkerComponent implements OnInit {
   constructor(private workerService: WorkerService, private router: Router) { }
 
   ngOnInit() {
+    
   }
 
   submit(): void {
-   let worker: Worker = {
-        id : this.id,
-        first_name: this.inputFirstName,
-        last_name: this.inputLastName,
-        role: this.inputRole,
-        startDate: this.inputStartDate
-      };
+
+    let worker: Worker = {
+      id : 0,
+      firstName: this.inputFirstName,
+      lastName: this.inputLastName,
+      role: this.inputRole,
+      startDate: [this.inputStartDate.getFullYear(), this.inputStartDate.getMonth(), this.inputStartDate.getDay()]
+    };
       this.workerService.addWorker(worker).subscribe(x => this.succesMsg = true );
   }
 
