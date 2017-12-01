@@ -33,12 +33,12 @@ export class WorkerService {
       );
   }
 
-  searchWorkers(worker: Worker) {
+  searchWorkers(worker: Worker, size: number) {
     worker.firstName = worker.firstName == "" ? undefined : worker.firstName;
     worker.lastName = worker.lastName == "" ? undefined : worker.lastName;
     worker.email = worker.email == "" ? undefined : worker.email;
     console.log(worker);
-    return this.http.post<UserList>(this.reqResUrl + `users/search`, worker)
+    return this.http.post<UserList>(this.reqResUrl + `users/search?size=` + size, worker)
       .pipe(
       catchError(this.handleError<UserList>('searchWorkers'))
       );
