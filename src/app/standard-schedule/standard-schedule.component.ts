@@ -10,9 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class StandardScheduleComponent implements OnInit {
 
-  public updateMsg = '';
   public schedule: StandardSchedule;
   workerId: number;
+  public successEdit = false;
 
   constructor(
     private workerService: WorkerService,
@@ -21,27 +21,24 @@ export class StandardScheduleComponent implements OnInit {
 
   ngOnInit() {
     this.loadSchedule();
-
   }
 
   loadSchedule(): void {
     const id = +this.route.snapshot.paramMap.get('id');
 
       this.workerService.getStandardSchedule(id).subscribe( x => {
-          console.log(x);
           this.schedule = x;
-          console.log(this.schedule.defaultEntries.FRIDAY);
       });
   }
 
   submit(): void {
     this.workerService.updateStandardSchedule(this.schedule).subscribe( x => {
-      this.showUpdateMessage();
+      this.successEdit = true;
     });
   }
 
-  showUpdateMessage(): void {
-    this.updateMsg += 'Het rooster is opgeslagen!';
+  setEdit(): void {
+    this.successEdit = false;
   }
 
 }
