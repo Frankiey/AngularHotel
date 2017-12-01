@@ -70,7 +70,7 @@ export class WorkerService {
   }
 
   updateStandardSchedule(schedule: StandardSchedule): Observable<any[] |StandardSchedule> {
-    return this.http.put<StandardSchedule>(this.reqResUrl + 'users/' + schedule.userId, schedule, httpOptions).pipe(
+    return this.http.put<StandardSchedule>(this.reqResUrl + 'default-schedule', schedule, httpOptions).pipe(
       catchError(this.handleError('update Standard Schedule', []))
     );
   }

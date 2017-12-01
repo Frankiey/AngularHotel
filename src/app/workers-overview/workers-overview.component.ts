@@ -54,7 +54,7 @@ export class WorkersOverviewComponent implements OnInit {
   }
 
   search(): void {
-    let worker = { id: -1, firstName: this.searchFirstName, lastName: this.searchLastName, email: this.searchEmail, roleId: this.searchRole, startDate: this.searchDate }
+    let worker = { id: -1, firstName: this.searchFirstName, lastName: this.searchLastName, email: this.searchEmail, roleId: this.searchRole, startDate: this.searchDate, role: "" }
     this.workerService.searchWorkers(worker).subscribe(data => {
       this.initializeTable(data);
     });

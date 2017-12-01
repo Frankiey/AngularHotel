@@ -1,62 +1,63 @@
 <main class="container">
-  <h3>Standard Rooster van Ramon Delgado</h3>
+  <div *ngIf="schedule">
+  <h3>Default Schedule of {{schedule.firstName}} {{schedule.lastName}}</h3>
   <br/>
   <div class="table-responsive">
   <table class="table table-striped" width="100%">
     <thead>
       <tr>
-      <th>Dagen</th>
-      <th>Ochtend</th>
-      <th>Middag</th>
-      <th>Avond</th>
-      <th>Nacht</th>
+      <th>Days</th>
+      <th>Morning</th>
+      <th>Afternoon</th>
+      <th>Evening</th>
+      <th>Night</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Maandag</td>
+        <td>Monday</td>
         <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.MONDAY.MORNING" class="form-control"></td>
         <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.MONDAY.AFTERNOON" class="form-control"></td>
         <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.MONDAY.EVENING" class="form-control"></td>
         <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.MONDAY.NIGHT" class="form-control"></td>
       </tr>
       <tr>
-          <td>Dinsdag</td>
+          <td>Tuesday</td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.TUESDAY.MORNING" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.TUESDAY.AFTERNOON" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.TUESDAY.EVENING" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.TUESDAY.NIGHT" class="form-control"></td>
       </tr>
       <tr>
-          <td>Woensdag</td>
+          <td>Wednesday</td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.WEDNESDAY.MORNING" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.WEDNESDAY.AFTERNOON" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.WEDNESDAY.EVENING" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.WEDNESDAY.NIGHT" class="form-control"></td>
       </tr>
       <tr>
-          <td>Donderdag</td>
+          <td>Thursday</td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.THURSDAY.MORNING" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.THURSDAY.AFTERNOON" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.THURSDAY.EVENING" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.THURSDAY.NIGHT" class="form-control"></td>
       </tr>
       <tr>
-          <td>Vrijdag</td>
+          <td>Friday</td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.FRIDAY.MORNING" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.FRIDAY.AFTERNOON" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.FRIDAY.EVENING" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.FRIDAY.NIGHT" class="form-control"></td>
       </tr>
       <tr>
-          <td>Zaterdag</td>
+          <td>Saturday</td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.SATURDAY.MORNING" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.SATURDAY.AFTERNOON" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.SATURDAY.EVENING" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.SATURDAY.NIGHT" class="form-control"></td>
       </tr>
       <tr>
-          <td>Zondag</td>
+          <td>Sunday</td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.SUNDAY.MORNING" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.SUNDAY.AFTERNOON" class="form-control"></td>
           <td><input  type="checkBox" [(ngModel)]="schedule.defaultEntries.SUNDAY.EVENING" class="form-control"></td>
@@ -65,8 +66,13 @@
     </tbody>
   </table>
 
-  <button (click)="submit()" class="btn btn-primary">Wijzig</button>
-  {{updateMsg}}
+  <div *ngIf="successEdit" class="alert alert-success alert-dismissable" (click)="setEdit()">
+      <a href="/overview" class="close" data-dismiss="alert" aria-label="close" (click)="setEdit()">&times;</a>
+      <strong>Saving changes successful!</strong>
   </div>
 
+  <button (click)="submit()" class="btn btn-primary">Wijzig</button>
+
+  </div>
+</div>
 </main>

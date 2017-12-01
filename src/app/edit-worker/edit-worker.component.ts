@@ -18,7 +18,8 @@ export class EditWorkerComponent implements OnInit {
   inputLastName: string;
   inputRole: string;
   inputStartDate: string;
-  inputAvatar: string;
+  inputEmail: string;
+  //inputAvatar: string;
 
   deleted = false;
   index: number;
@@ -49,7 +50,7 @@ export class EditWorkerComponent implements OnInit {
     this.id = user.id;
     this.inputFirstName = user.firstName;
     this.inputLastName = user.lastName;
-    this.inputRole = 'Schoonmaker';
+    this.inputRole = user.firstName;
     this.inputStartDate = user.startDate.join('-');
 
     console.log('fields filled');
