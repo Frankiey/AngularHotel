@@ -12,54 +12,51 @@ import { Router } from '@angular/router';
 export class WorkersOverviewComponent implements OnInit {
   pagesArray: any[];
 
-  currentPage: number = 1;
-  maximumPages: number;
+  currentPage: number;
+  totalPages: number;
+  size: number;
 
   searchFirstName: string;
   searchLastName: string;
   searchEmail: string;
-  searchRole: string;
+  searchRole: number;
   searchDate: number[];
 
   workers: Worker[];
 
   constructor(public workerService: WorkerService, private router: Router) {
-   }
+  }
 
   ngOnInit() {
-    console.log('overview Initied');
-    this.workerService.getWorkers().subscribe(x => {
-      // Todo check any
-      let userList: UserList =  x as UserList;
-      let users: User[] = userList.content;
-      let workers2: Worker[] = users as Worker[];
+    this.loadTable();
+  }
 
-      this.workers = workers2;
-      console.log('Message received');
-      console.log(workers2);
-      this.maximumPages = x.totalPages;
-      this.pagesArray = new Array(x.totalPages);
+  loadTable(page: number = 0, size: number = 10) {
+    this.workerService.getWorkers(page, size).subscribe(data => {
+      this.initializeTable(data);
     });
+  }
+
+  initializeTable(data: UserList) {
+    this.workers = data.content as Worker[];
+    this.totalPages = data.totalPages;
+    this.currentPage = data.number;
+    this.size = data.size;
+    this.pagesArray = new Array(data.totalPages);
+  }
+
+  paginationClick(size: number) {
+    this.loadTable(0, size);
+  }
+
+  pageClick(page: number): void {
+    this.loadTable(page, this.size);
   }
 
   search(): void {
-    let worker = {id: -1, firstName: this.searchFirstName, lastName: this.searchLastName, email: this.searchEmail, role: this.searchRole, startDate: this.searchDate, roleId: 1}
-    this.workerService.searchWorkers(worker).subscribe(x => {
-      console.log("Search result: " + x);
-      this.workers = x as Worker[];
-
-    });
-  }
-
-
-  pageClick(page: number): void {
-    this.currentPage = page;
-    this.workerService.getWorkers(page).subscribe(x => {
-      let userList: UserList =  x as UserList;
-      let users: User[] = userList.content;
-      let workers2: Worker[] = users as Worker[];
-
-      this.workers = workers2;
+    let worker = { id: -1, firstName: this.searchFirstName, lastName: this.searchLastName, email: this.searchEmail, roleId: this.searchRole, startDate: this.searchDate, role: "" }
+    this.workerService.searchWorkers(worker).subscribe(data => {
+      this.initializeTable(data);
     });
   }
 

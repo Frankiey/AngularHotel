@@ -25,8 +25,9 @@ export class WorkerService {
     );
   }
 
-  getWorkers(page: number = 1): Observable<UserList> {
-    return this.http.get<UserList>(this.reqResUrl + `users`)//?per_page=3&page=${page}`)
+  getWorkers(page: number, size: number): Observable<UserList> {
+    console.log(this.reqResUrl + `users?page=` + page + `&size=` + size);
+    return this.http.get<UserList>(this.reqResUrl + `users?page=` + page + `&size=` + size)
       .pipe(
       catchError(this.handleError<UserList>('getWorkers'))
       );
@@ -36,9 +37,10 @@ export class WorkerService {
     worker.firstName = worker.firstName == "" ? undefined : worker.firstName;
     worker.lastName = worker.lastName == "" ? undefined : worker.lastName;
     worker.email = worker.email == "" ? undefined : worker.email;
-    return this.http.post<Worker[]>(this.reqResUrl + `users/search`, worker)//?per_page=3&page=${page}`)
+    console.log(worker);
+    return this.http.post<UserList>(this.reqResUrl + `users/search`, worker)
       .pipe(
-      catchError(this.handleError<Worker>('searchWorkers'))
+      catchError(this.handleError<UserList>('searchWorkers'))
       );
   }
 

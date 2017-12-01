@@ -1,12 +1,13 @@
 export interface UserList {
   content: User[];
-  last: boolean;
   totalElemens: number;
   totalPages: number;
+  last: boolean;
   size: number;
+  number: number;
+  numberOfElements: number;
   first: boolean;
   sort: any;
-  numberOfElements: number;
 }
 
 export interface RoleList {
