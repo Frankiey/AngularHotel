@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { WorkerService } from '../worker.service';
 import { Worker } from '../worker';
-import { UserList, SingleUser, User} from '../Api-types';
+import { UserList, SingleUser, User, WorkerPut} from '../Api-types';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class EditWorkerComponent implements OnInit {
   inputFirstName: string;
   inputLastName: string;
   inputRole: string;
-  inputStartDate: Date;
+  inputStartDate: string;
   inputAvatar: string;
 
   deleted = false;
@@ -40,8 +40,7 @@ export class EditWorkerComponent implements OnInit {
   getWorker(): void {
     const id = +this.route.snapshot.paramMap.get('id');
     this.workerService.getWorker(id).subscribe(x => {
-      let user: User = x.data;
-      this.fillFields(user);
+      this.fillFields(x);
     });
   }
 
@@ -51,7 +50,7 @@ export class EditWorkerComponent implements OnInit {
     this.inputFirstName = user.firstName;
     this.inputLastName = user.lastName;
     this.inputRole = 'Schoonmaker';
-    this.inputStartDate = undefined;
+    this.inputStartDate = user.startDate.join('-');
 
     console.log('fields filled');
   }
@@ -60,17 +59,18 @@ export class EditWorkerComponent implements OnInit {
     if (this.deleted) {
      return;
     }
-    let worker: Worker = {
+    let splitDate: string[] = this.inputStartDate.split('-');
+
+    let worker: WorkerPut = {
       id: this.id,
       firstName: this.inputFirstName,
       lastName: this.inputLastName,
-      role: this.inputRole,
-      startDate: [this.inputStartDate.getFullYear(), this.inputStartDate.getMonth(), this.inputStartDate.getDay()]
+      email: 'd@d.com',
+      startDate: [Number(splitDate[0]), Number(splitDate[1].valueOf()), Number(splitDate[2])]
     };
 
     this.workerService.updateWorker(worker).subscribe(x =>  {
       this.successEdit = true;
-      console.log(x);
     });
   }
 

@@ -13,13 +13,21 @@ export interface SingleUser {
   data: User;
 }
 
+export interface WorkerPut {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  startDate: number[];
+  role?: number;
+}
+
 export interface User {
   id: number;
   firstName: string;
   lastName: string;
   email: string;
   startDate: number[];
-  role: string;
 }
 
 export interface StandardSchedule {
