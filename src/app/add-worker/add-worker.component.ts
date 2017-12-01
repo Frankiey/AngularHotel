@@ -22,17 +22,18 @@ export class AddWorkerComponent implements OnInit {
   constructor(private workerService: WorkerService, private router: Router) { }
 
   ngOnInit() {
-    
+
   }
 
   submit(): void {
 
-    let splitDate : string[] = this.inputStartDate.split("-");
+    let splitDate : string[] = this.inputStartDate.split('-');
 
     let worker: Worker = {
       id : 0,
       firstName: this.inputFirstName,
       lastName: this.inputLastName,
+      email: null,
       role: this.inputRole,
       startDate: [Number(splitDate[0]), Number(splitDate[1].valueOf()), Number(splitDate[2])]
     };

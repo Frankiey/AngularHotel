@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
-import { UserList, SingleUser, User, StandardSchedule } from './Api-types';
+import { UserList, SingleUser, User, StandardSchedule, WorkerPut } from './Api-types';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,21 +19,21 @@ export class WorkerService {
   constructor(private http: HttpClient) {
   }
 
-  getWorker(id: number): Observable<SingleUser> {
-    return this.http.get<SingleUser>(this.reqResUrl + 'users/' + id).pipe(
-      catchError(this.handleError<SingleUser>('getWorker'))
+  getWorker(id: number): Observable<User> {
+    return this.http.get<User>(this.reqResUrl + 'users/' + id).pipe(
+      catchError(this.handleError<User>('getWorker'))
     );
   }
 
   getWorkers(page: number = 1): Observable<UserList> {
-    return this.http.get<UserList>(this.reqResUrl + `users?per_page=3&page=${page}`)
+    return this.http.get<UserList>(this.reqResUrl + `users`)//?per_page=3&page=${page}`)
       .pipe(
       catchError(this.handleError<UserList>('getWorkers'))
       );
   }
 
-  updateWorker(worker: Worker): Observable<any[] | Worker> {
-    return this.http.put<Worker>(this.reqResUrl + 'users/' + worker.id, worker, httpOptions).pipe(
+  updateWorker(worker: WorkerPut): Observable<any | WorkerPut> {
+    return this.http.put<WorkerPut>(this.reqResUrl + 'users/' + worker.id, worker, httpOptions).pipe(
       catchError(this.handleError('updateWorker', []))
     );
   }
@@ -51,7 +51,7 @@ export class WorkerService {
 
   getStandardSchedule(id: number): Observable<StandardSchedule> {
     // todo fix route
-    return this.http.get<StandardSchedule>(this.reqResUrl + `users/` + id)
+    return this.http.get<StandardSchedule>(this.reqResUrl + `default-schedule/` + id)
       .pipe(
       catchError(this.handleError<StandardSchedule>('Get standard schedule'))
       );

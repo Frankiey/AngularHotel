@@ -64,7 +64,7 @@ export class StandardScheduleComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //this.loadSchedule();
+    this.loadSchedule();
 
   }
 
