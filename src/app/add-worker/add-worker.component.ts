@@ -29,12 +29,6 @@ export class AddWorkerComponent implements OnInit {
 
     let splitDate : string[] = this.inputStartDate.split("-");
 
-    console.log(this.inputFirstName);
-    console.log(this.inputLastName);
-    console.log(this.inputRole);
-    console.log(this.inputStartDate);
-    console.log([Number(splitDate[0]), Number(splitDate[1].valueOf()), Number(splitDate[2])]);
-
     let worker: Worker = {
       id : 0,
       firstName: this.inputFirstName,
