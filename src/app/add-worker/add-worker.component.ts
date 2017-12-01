@@ -16,6 +16,7 @@ export class AddWorkerComponent implements OnInit {
   inputLastName: string;
   inputRole: string;
   inputStartDate: string;
+  inputEmail: string;
 
   succesMsg: boolean;
 
@@ -33,10 +34,11 @@ export class AddWorkerComponent implements OnInit {
       id : 0,
       firstName: this.inputFirstName,
       lastName: this.inputLastName,
-      email: null,
-      role: this.inputRole,
+      email: this.inputEmail,
+      roleId: Number(this.inputRole),
       startDate: [Number(splitDate[0]), Number(splitDate[1].valueOf()), Number(splitDate[2])]
     };
+
     this.workerService.addWorker(worker).subscribe(x => this.succesMsg = true );
   }
 

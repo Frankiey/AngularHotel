@@ -44,7 +44,7 @@ export class WorkerService {
     );
   }
   addWorker(worker: Worker): Observable<Worker> {
-    return this.http.post<Worker>(this.reqResUrl + 'users', httpOptions).pipe(
+    return this.http.post<Worker>(this.reqResUrl + 'users', worker , httpOptions).pipe(
       catchError(this.handleError<Worker>('addWorker'))
     );
   }
