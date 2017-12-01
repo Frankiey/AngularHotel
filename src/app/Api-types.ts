@@ -9,6 +9,22 @@ export interface UserList {
   numberOfElements: number;
 }
 
+export interface RoleList {
+  content: Role[];
+  last: boolean;
+  totalElemens: number;
+  totalPages: number;
+  size: number;
+  first: boolean;
+  sort: any;
+  numberOfElements: number;
+}
+
+export interface Role {
+  id: number;
+  name: string;
+}
+
 export interface SingleUser {
   data: User;
 }

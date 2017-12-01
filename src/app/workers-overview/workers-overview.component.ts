@@ -43,7 +43,7 @@ export class WorkersOverviewComponent implements OnInit {
   }
 
   search(): void {
-    let worker = {id: -1, firstName: this.searchFirstName, lastName: this.searchLastName, email: this.searchEmail, role: this.searchRole, startDate: this.searchDate}
+    let worker = {id: -1, firstName: this.searchFirstName, lastName: this.searchLastName, email: this.searchEmail, role: this.searchRole, startDate: this.searchDate, roleId: 1}
     this.workerService.searchWorkers(worker).subscribe(x => {
       console.log("Search result: " + x);
       this.workers = x as Worker[];

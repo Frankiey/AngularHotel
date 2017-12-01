@@ -4,6 +4,8 @@ import { WorkerService } from '../worker.service';
 import { Worker } from '../worker';
 import {} from '../../../node_modules/bootstrap/dist/';
 import { Router } from '@angular/router';
+import { RoleService } from '../role.service';
+import { Role, RoleList } from '../Api-types';
 
 @Component({
   selector: 'app-add-worker',
@@ -18,11 +20,15 @@ export class AddWorkerComponent implements OnInit {
   inputStartDate: string;
   inputEmail: string;
 
+  roles: Role[];
+
   succesMsg: boolean;
 
-  constructor(private workerService: WorkerService, private router: Router) { }
+  constructor(private roleService: RoleService, private workerService: WorkerService, private router: Router) { }
 
   ngOnInit() {
+
+    this.roleService.getRoles().subscribe(x => this.roles = x.content);
 
   }
 
@@ -36,6 +42,7 @@ export class AddWorkerComponent implements OnInit {
       lastName: this.inputLastName,
       email: this.inputEmail,
       roleId: Number(this.inputRole),
+      role: '',
       startDate: [Number(splitDate[0]), Number(splitDate[1].valueOf()), Number(splitDate[2])]
     };
 

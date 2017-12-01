@@ -4,5 +4,6 @@ export class Worker {
   lastName: string;
   email: string;
   roleId: number;
+  role: string;
   startDate: number[];
 }
