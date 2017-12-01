@@ -7,12 +7,12 @@
   <form class="form-inline table-options-right">
     <button type="button" class="btn btn-outline-primary dropdown-toggle" id="page-limit" data-toggle="dropdown" aria-haspopup="true"
       aria-expanded="false">
-      {{pageLimit}}
+      {{size}}
     </button>
     <div class="dropdown-menu">
-      <a class="dropdown-item" (click)="loadAmount(5)">5</a>
-      <a class="dropdown-item" (click)="loadAmount(10)">10</a>
-      <a class="dropdown-item" (click)="loadAmount(25)">25</a>
+      <a class="dropdown-item" (click)="paginationClick(5)">5</a>
+      <a class="dropdown-item" (click)="paginationClick(10)">10</a>
+      <a class="dropdown-item" (click)="paginationClick(25)">25</a>
     </div>
   </form>
 
@@ -99,15 +99,15 @@
   <br>
   <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
-      <li class="page-item" [ngClass]="{'disabled': currentPage === 1}">
+      <li class="page-item" [ngClass]="{'disabled': currentPage === 0}">
         <a class="page-link customTwo" (click)="pageClick((currentPage-1));">Previous</a>
       </li>
 
-      <li *ngFor="let page of pagesArray; index as i" class="page-item" [ngClass]="{'active': currentPage === i+1}">
-        <a class="page-link custom" (click)="pageClick(i+1);">{{i+1}}</a>
+      <li *ngFor="let page of pagesArray; index as i" class="page-item" [ngClass]="{'active': currentPage === i}">
+        <a class="page-link custom" (click)="pageClick(i);">{{i+1}}</a>
       </li>
 
-      <li class="page-item" [ngClass]="{'disabled': currentPage === maximumPages}">
+      <li class="page-item" [ngClass]="{'disabled': currentPage === totalPages - 1}">
         <a class="page-link customTwo" (click)="pageClick(currentPage+1);">Next</a>
       </li>
     </ul>
