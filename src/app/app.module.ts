@@ -13,7 +13,6 @@ import { FrontPageComponent } from './front-page/front-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { StandardScheduleComponent } from './standard-schedule/standard-schedule.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

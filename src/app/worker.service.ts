@@ -32,6 +32,16 @@ export class WorkerService {
       );
   }
 
+  searchWorkers(worker: Worker) {
+    worker.firstName = worker.firstName == "" ? undefined : worker.firstName;
+    worker.lastName = worker.lastName == "" ? undefined : worker.lastName;
+    worker.email = worker.email == "" ? undefined : worker.email;
+    return this.http.post<Worker[]>(this.reqResUrl + `users/search`, worker)//?per_page=3&page=${page}`)
+      .pipe(
+      catchError(this.handleError<Worker>('searchWorkers'))
+      );
+  }
+
   updateWorker(worker: WorkerPut): Observable<any | WorkerPut> {
     return this.http.put<WorkerPut>(this.reqResUrl + 'users/' + worker.id, worker, httpOptions).pipe(
       catchError(this.handleError('updateWorker', []))
@@ -57,7 +67,7 @@ export class WorkerService {
       );
   }
 
-  updateStandardSchedule(schedule: StandardSchedule): Observable<any[] |StandardSchedule> {
+  updateStandardSchedule(schedule: StandardSchedule): Observable<any[] | StandardSchedule> {
     return this.http.put<StandardSchedule>(this.reqResUrl + 'users/' + schedule.id, schedule, httpOptions).pipe(
       catchError(this.handleError('update Standard Schedule', []))
     );

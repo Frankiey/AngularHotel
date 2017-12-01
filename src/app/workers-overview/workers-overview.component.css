@@ -13,3 +13,15 @@ li {cursor: pointer}
 .pntr {
   cursor: pointer
 }
+
+.table-options-right {
+    float: right;
+}
+
+.table-options-right input {
+    margin-right: 5px;
+}
+
+.table {
+    margin-top: 10px;
+}

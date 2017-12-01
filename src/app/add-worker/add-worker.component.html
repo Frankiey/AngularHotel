@@ -1,44 +1,44 @@
 <main>
 <form class="container">
-    <h2 class="display-4">Werknemer Toevoegen</h2>
+    <h2 class="display-4">Add Employee</h2>
     <!-- <div class="form-group">
       <label for="id">Id</label>
       <input name="id" ng-model="id" class="form-control" id="id" aria-describedby="id" placeholder="Enter id">
     </div> -->
     <div class="form-group">
-      <label for="firstName">Voornaam</label>
-      <input name="firstName" [(ngModel)]="inputFirstName" class="form-control" id="firstName" placeholder="Voornaam">
+      <label for="firstName">First name</label>
+      <input name="firstName" [(ngModel)]="inputFirstName" class="form-control" id="firstName">
     </div>
     <div class="form-group">
-        <label for="lastName">Achternaam</label>
-        <input name="lastName" [(ngModel)]="inputLastName" class="form-control" id="lastName" placeholder="Achternaam">
+        <label for="lastName">Last Name</label>
+        <input name="lastName" [(ngModel)]="inputLastName" class="form-control" id="lastName">
     </div>
     <div>
-      <label for="role">Rol</label>
+      <label for="role">Role</label>
       <select name="role" [(ngModel)]="inputRole" class="custom-select d-block my-3" required>
-          <option value="">Selecteer een rol</option>
-          <option value="Schoonmaker">Schoonmaker</option>
-          <option value="Assistent manager">Assistent manager</option>
+          <option value="">Select a role</option>
+          <option value="Schoonmaker">Cleaner</option>
+          <option value="Assistent manager">Assistent Manager</option>
           <option value="Manager">Manager</option>
-          <option value="Serveerder">Serveerder</option>
+          <option value="Serveerder">Server</option>
           <option value="Receptionist">Receptionist</option>
-          <option value="Chef kok">Chef kok</option>
-          <option value="Kok">Kok</option>
+          <option value="Chef kok">Chef</option>
+          <option value="Kok">Cook</option>
         </select>
     </div>
 
     <div class="form-group">
-        <label for="startDate">Start Datum</label>
-        <input name="startDate" [(ngModel)]="inputStartDate" type="date" class="form-control" id="startDate" placeholder="Start Date">
+        <label for="startDate">Start Date</label>
+        <input name="startDate" [(ngModel)]="inputStartDate" type="date" class="form-control" id="startDate">
     </div>
 
     <div *ngIf="succesMsg" class="alert alert-success alert-dismissable" id="addSuccess">
         <a href="/overview" class="close" data-dismiss="alert" aria-label="close" (click)="redirectTo()">&times;</a>
-        <strong>Gelukt!</strong>
-        <br> Als u dit bericht sluit gaat u terug naar het werknemers overzicht.
+        <strong>Success!</strong>
+        <br> If you close this message you will return to the employee overview
     </div>
 
-    <button id="addWorker" (click)="submit()" class="btn btn-primary">Toevoegen</button>
+    <button id="addWorker" (click)="submit()" class="btn btn-primary">Add</button>
 
 
   </form>

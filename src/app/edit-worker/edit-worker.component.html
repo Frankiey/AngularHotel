@@ -1,6 +1,6 @@
 <main>
   <form class="container">
-    <h2 class="display-4">Werknemer Aanpassen</h2>
+    <h2 class="display-4">Edit Employee</h2>
     <div class="form-group">
       <img width="10%" src="{{ inputAvatar }}">
     </div>
@@ -9,49 +9,49 @@
       <input name="id" [(ngModel)]="id" class="form-control" id="id" aria-describedby="id" placeholder="Enter id" disabled>
     </div>
     <div class="form-group">
-      <label for="firstName">Voornaam</label>
-      <input name="inputFirstName" [(ngModel)]="inputFirstName" class="form-control" id="firstName" placeholder="Voornaam">
+      <label for="firstName">First Name</label>
+      <input name="inputFirstName" [(ngModel)]="inputFirstName" class="form-control" id="firstName">
     </div>
     <div class="form-group">
-      <label for="lastName">Achternaam</label>
-      <input name="inputLastName" [(ngModel)]="inputLastName" class="form-control" id="lastName" placeholder="Achternaam">
+      <label for="lastName">Last Name</label>
+      <input name="inputLastName" [(ngModel)]="inputLastName" class="form-control" id="lastName">
     </div>
 
     <div>
-      <label for="role">Rol</label>
+      <label for="role">Role</label>
       <select name="inputRole" [(ngModel)]="inputRole" class="custom-select d-block my-3" required>
-        <option value="">Selecteer een rol</option>
-        <option value="Schoonmaker">Schoonmaker</option>
-        <option value="Assistent manager">Assistent manager</option>
+        <option value="">Select a role</option>
+        <option value="Schoonmaker">Cleaner</option>
+        <option value="Assistent manager">Assistent Manager</option>
         <option value="Manager">Manager</option>
-        <option value="Serveerder">Serveerder</option>
+        <option value="Serveerder">Server</option>
         <option value="Receptionist">Receptionist</option>
-        <option value="Chef kok">Chef kok</option>
-        <option value="Kok">Kok</option>
+        <option value="Chef kok">Chef</option>
+        <option value="Kok">Cook</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="startDate">Start Datum</label>
-      <input name="inputStartDate" [(ngModel)]="inputStartDate" type="date" class="form-control" id="startDate" placeholder="Start Date" disabled>
+      <label for="startDate">Start Date</label>
+      <input name="inputStartDate" [(ngModel)]="inputStartDate" type="date" class="form-control" id="startDate" disabled>
     </div>
 
 
     <div *ngIf="successDelete" class="alert alert-success alert-dismissable">
       <a href="/overview" class="close" data-dismiss="alert" aria-label="close" (click)="redirectTo()">&times;</a>
-      <strong>Successvol verwijderd!</strong>
-      <br> Als u dit bericht sluit gaat u terug naar het werknemers overzicht.
+      <strong>Deletion successful!</strong>
+      <br> If you close this message you will return to the employee overview 
     </div>
 
     <div *ngIf="successEdit" class="alert alert-success alert-dismissable">
       <a href="/overview" class="close" data-dismiss="alert" aria-label="close" (click)="redirectTo()">&times;</a>
-      <strong>Successvol gewijzigd!</strong>
-      <br> Als u dit bericht sluit gaat u terug naar het werknemers overzicht.
+      <strong>Saving changes successful!</strong>
+      <br> If you close this message you will return to the employee overview
     </div>
 
 
-    <button (click)="submit()" class="btn btn-primary" [ngClass]="{'disabled' : deleted}">Wijzig</button>
-    <button (click)="delete()" class="btn btn-primary">Verwijder</button>
+    <button (click)="submit()" class="btn btn-primary" [ngClass]="{'disabled' : deleted}">Edit</button>
+    <button (click)="delete()" class="btn btn-primary">Delete</button>
 
 
   </form>

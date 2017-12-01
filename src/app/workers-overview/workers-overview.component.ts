@@ -12,10 +12,14 @@ import { Router } from '@angular/router';
 export class WorkersOverviewComponent implements OnInit {
   pagesArray: any[];
 
-  inputName: string;
-
   currentPage: number = 1;
   maximumPages: number;
+
+  searchFirstName: string;
+  searchLastName: string;
+  searchEmail: string;
+  searchRole: string;
+  searchDate: number[];
 
   workers: Worker[];
 
@@ -38,24 +42,13 @@ export class WorkersOverviewComponent implements OnInit {
     });
   }
 
-  filter(): void {
-    this.workerService.getWorkers().subscribe(x => {
-      // Todo check any
-      let userList: UserList =  x as UserList;
-      let users: User[] = userList.content;
-      let workers2: Worker[] = users as Worker[];
+  search(): void {
+    let worker = {id: -1, firstName: this.searchFirstName, lastName: this.searchLastName, email: this.searchEmail, role: this.searchRole, startDate: this.searchDate}
+    this.workerService.searchWorkers(worker).subscribe(x => {
+      console.log("Search result: " + x);
+      this.workers = x as Worker[];
 
-      this.workers = workers2;
-      console.log('Message received');
-      console.log(workers2);
-      this.filterWorkers();
     });
-  }
-
-  filterWorkers(): void {
-    console.log('filtered');
-    this.workers = this.workers.filter(worker => worker.firstName.includes(this.inputName));
-    console.log('done filtering');
   }
 
 
