@@ -11,51 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class StandardScheduleComponent implements OnInit {
 
   public updateMsg = '';
-  public schedule: StandardSchedule = {
-    id: 1,
-    monday: {
-      morning: true,
-      afternoon: true,
-      evening: true,
-      night: true
-    },
-    tuesday: {
-      morning: true,
-      afternoon: true,
-      evening: true,
-      night: true
-    },
-    wednesday: {
-      morning: true,
-      afternoon: true,
-      evening: true,
-      night: true
-    },
-    thursday: {
-      morning: true,
-      afternoon: true,
-      evening: true,
-      night: true
-    },
-    friday: {
-      morning: true,
-      afternoon: true,
-      evening: true,
-      night: true
-    },
-    saturday: {
-      morning: true,
-      afternoon: true,
-      evening: true,
-      night: true
-    },
-    sunday: {
-      morning: true,
-      afternoon: true,
-      evening: true,
-      night: true
-    }
-  };
+  public schedule: StandardSchedule;
   workerId: number;
 
   constructor(
@@ -72,7 +28,9 @@ export class StandardScheduleComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
 
       this.workerService.getStandardSchedule(id).subscribe( x => {
+          console.log(x);
           this.schedule = x;
+          console.log(this.schedule.defaultEntries.FRIDAY);
       });
   }
 

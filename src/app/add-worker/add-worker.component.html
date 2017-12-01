@@ -13,17 +13,21 @@
         <label for="lastName">Last Name</label>
         <input name="lastName" [(ngModel)]="inputLastName" class="form-control" id="lastName">
     </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input name="email" [(ngModel)]="inputEmail" class="form-control" id="email" placeholder="Email Adres">
+    </div>
     <div>
       <label for="role">Role</label>
       <select name="role" [(ngModel)]="inputRole" class="custom-select d-block my-3" required>
           <option value="">Select a role</option>
-          <option value="Schoonmaker">Cleaner</option>
-          <option value="Assistent manager">Assistent Manager</option>
-          <option value="Manager">Manager</option>
-          <option value="Serveerder">Server</option>
-          <option value="Receptionist">Receptionist</option>
-          <option value="Chef kok">Chef</option>
-          <option value="Kok">Cook</option>
+          <option value=1>Cleaner</option>
+          <option value=2>Assistent manager</option>
+          <option value=3>Manager</option>
+          <option value=4>Server</option>
+          <option value=5>Receptionist</option>
+          <option value=6>Chef</option>
+          <option value=7>Cook</option>
         </select>
     </div>
 

@@ -31,19 +31,23 @@ export interface User {
 }
 
 export interface StandardSchedule {
-  id: number;
-  monday: DayShifts;
-  tuesday: DayShifts;
-  wednesday: DayShifts;
-  thursday: DayShifts;
-  friday: DayShifts;
-  saturday: DayShifts;
-  sunday: DayShifts;
+  userId: number;
+  firstName: string;
+  lastName: string;
+  defaultEntries: {
+      MONDAY: DayShifts;
+      TUESDAY: DayShifts;
+      WEDNESDAY: DayShifts;
+      THURSDAY: DayShifts;
+      FRIDAY: DayShifts;
+      SATURDAY: DayShifts;
+      SUNDAY: DayShifts;
+  };
 }
 
 export interface DayShifts {
-  morning: boolean;
-  afternoon: boolean;
-  evening: boolean;
-  night: boolean;
+  MORNING: boolean;
+  AFTERNOON: boolean;
+  EVENING: boolean;
+  NIGHT: boolean;
 }

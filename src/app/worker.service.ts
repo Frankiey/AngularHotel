@@ -54,7 +54,7 @@ export class WorkerService {
     );
   }
   addWorker(worker: Worker): Observable<Worker> {
-    return this.http.post<Worker>(this.reqResUrl + 'users', httpOptions).pipe(
+    return this.http.post<Worker>(this.reqResUrl + 'users', worker , httpOptions).pipe(
       catchError(this.handleError<Worker>('addWorker'))
     );
   }
@@ -67,8 +67,8 @@ export class WorkerService {
       );
   }
 
-  updateStandardSchedule(schedule: StandardSchedule): Observable<any[] | StandardSchedule> {
-    return this.http.put<StandardSchedule>(this.reqResUrl + 'users/' + schedule.id, schedule, httpOptions).pipe(
+  updateStandardSchedule(schedule: StandardSchedule): Observable<any[] |StandardSchedule> {
+    return this.http.put<StandardSchedule>(this.reqResUrl + 'users/' + schedule.userId, schedule, httpOptions).pipe(
       catchError(this.handleError('update Standard Schedule', []))
     );
   }

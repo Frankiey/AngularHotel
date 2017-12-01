@@ -12,6 +12,8 @@ import { EditWorkerComponent } from './edit-worker/edit-worker.component';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { StandardScheduleComponent } from './standard-schedule/standard-schedule.component';
+import { EditRolesComponent } from './edit-roles/edit-roles.component';
+import { RoleService } from './role.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { StandardScheduleComponent } from './standard-schedule/standard-schedule
     FrontPageComponent,
     NavbarComponent,
     StandardScheduleComponent,
+    EditRolesComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { StandardScheduleComponent } from './standard-schedule/standard-schedule
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [WorkerService],
+  providers: [WorkerService, RoleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
