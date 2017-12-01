@@ -1,0 +1,63 @@
+<main class="container">
+  <div>
+    <label>
+      <input type="search" [(ngModel)]="inputName" class="form-control mr-sm-2" placeholder="name">
+    </label>
+    <button (click)="filter();" class="btn btn-outline-success my-2 my-sm-0">Search</button>
+  </div>
+
+  <div class="fixed-right">
+    <a role="button" class="btn btn-primary" href="/addworker">Add</a>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table table-striped table-hover" width="100%">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>first name</th>
+              <th>last name</th>
+              <th>avatar</th>
+              <th>role</th>
+              <th>Date From</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="pntr" *ngFor="let worker of workers" (click)="redirectTo(worker.id);">
+              <td class="align-baseline" width="5%">{{ worker.id }}</td>
+              <td class="align-baseline" width="10%">{{ worker.firstName }}</td>
+              <td class="align-baseline" width="10%">{{ worker.lastName }}</td>
+              <td class="align-baseline" width="10%">
+                <img width="50%" src="{{easterEgg(worker.id, worker.avatar)}}">
+              </td>
+              <td class="align-baseline" width="10%"></td>
+              <td class="align-baseline" width="10%"></td>
+              <td class="align-baseline" width="10%">
+                <a href="/editworker/{{ worker.id }}">Edit/Delete</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [ngClass]="{'disabled': currentPage === 1}">
+          <a class="page-link customTwo" (click)="pageClick((currentPage-1));">Vorige</a>
+        </li>
+
+        <li *ngFor="let page of pagesArray; index as i" class="page-item" [ngClass]="{'active': currentPage === i+1}">
+          <a class="page-link custom" (click)="pageClick(i+1);">{{i+1}}</a>
+        </li>
+
+        <li class="page-item" [ngClass]="{'disabled': currentPage === maximumPages}">
+          <a class="page-link customTwo" (click)="pageClick(currentPage+1);">Volgende</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</main>
