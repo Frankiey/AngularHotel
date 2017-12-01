@@ -18,7 +18,7 @@ export class WorkersOverviewComponent implements OnInit {
   searchFirstName: string;
   searchLastName: string;
   searchEmail: string;
-  searchRole: string;
+  searchRole: number;
   searchDate: number[];
 
   workers: Worker[];
@@ -43,7 +43,7 @@ export class WorkersOverviewComponent implements OnInit {
   }
 
   search(): void {
-    let worker = {id: -1, firstName: this.searchFirstName, lastName: this.searchLastName, email: this.searchEmail, role: this.searchRole, startDate: this.searchDate}
+    let worker = {id: -1, firstName: this.searchFirstName, lastName: this.searchLastName, email: this.searchEmail, roleId: this.searchRole, startDate: this.searchDate}
     this.workerService.searchWorkers(worker).subscribe(x => {
       console.log("Search result: " + x);
       this.workers = x as Worker[];
