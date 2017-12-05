@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Worker } from '../worker';
 import { WorkerService } from '../worker.service';
-import { UserList, User } from '../Api-types';
+import { UserList, Worker } from '../Api-types';
 import { Router } from '@angular/router';
 import { RoleService } from '../role.service';
 import { Role } from '../Role';

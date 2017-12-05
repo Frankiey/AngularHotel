@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Worker } from './worker';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
-import { UserList, SingleUser, User, StandardSchedule, WorkerPut } from './Api-types';
+import { UserList, Worker, StandardSchedule, WorkerPut } from './Api-types';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,14 +18,13 @@ export class WorkerService {
   constructor(private http: HttpClient) {
   }
 
-  getWorker(id: number): Observable<User> {
-    return this.http.get<User>(this.reqResUrl + 'users/' + id).pipe(
-      catchError(this.handleError<User>('getWorker'))
+  getWorker(id: number): Observable<Worker> {
+    return this.http.get<Worker>(this.reqResUrl + 'users/' + id).pipe(
+      catchError(this.handleError<Worker>('getWorker'))
     );
   }
 
   getWorkers(page: number, size: number): Observable<UserList> {
-    console.log(this.reqResUrl + `users?page=` + page + `&size=` + size);
     return this.http.get<UserList>(this.reqResUrl + `users?page=` + page + `&size=` + size)
       .pipe(
       catchError(this.handleError<UserList>('getWorkers'))
@@ -37,7 +35,7 @@ export class WorkerService {
     worker.firstName = worker.firstName == "" ? undefined : worker.firstName;
     worker.lastName = worker.lastName == "" ? undefined : worker.lastName;
     worker.email = worker.email == "" ? undefined : worker.email;
-    console.log(worker);
+
     return this.http.post<UserList>(this.reqResUrl + `users/search?size=` + size, worker)
       .pipe(
       catchError(this.handleError<UserList>('searchWorkers'))
