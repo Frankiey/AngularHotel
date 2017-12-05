@@ -3,6 +3,8 @@ import { Worker } from '../worker';
 import { WorkerService } from '../worker.service';
 import { UserList, User } from '../Api-types';
 import { Router } from '@angular/router';
+import { RoleService } from '../role.service';
+import { Role } from '../Role';
 
 @Component({
   selector: 'app-workers-overview',
@@ -19,16 +21,18 @@ export class WorkersOverviewComponent implements OnInit {
   searchFirstName: string;
   searchLastName: string;
   searchEmail: string;
-  searchRole: number;
+  searchRole: string;
   searchDate: number[];
 
   workers: Worker[];
+  roles: Role[];
 
-  constructor(public workerService: WorkerService, private router: Router) {
+  constructor(public workerService: WorkerService, public roleService: RoleService, private router: Router) {
   }
 
   ngOnInit() {
     this.loadTable();
+    this.roleService.getRoles().subscribe(x => this.roles = x.content);
   }
 
   loadTable(page: number = 0, size: number = 10) {
@@ -38,11 +42,17 @@ export class WorkersOverviewComponent implements OnInit {
   }
 
   initializeTable(data: UserList) {
-    this.workers = data.content as Worker[];
-    this.totalPages = data.totalPages;
-    this.currentPage = data.number;
-    this.size = data.size;
-    this.pagesArray = new Array(data.totalPages);
+    if (data) {
+      this.workers = data.content as Worker[];
+      this.totalPages = data.totalPages;
+      this.currentPage = data.number;
+      this.size = data.size;
+      this.pagesArray = new Array(data.totalPages);
+    } else {
+      this.workers = [];
+      this.totalPages = 0;
+      this.currentPage = 0;
+    }
   }
 
   paginationClick(size: number) {
@@ -54,7 +64,8 @@ export class WorkersOverviewComponent implements OnInit {
   }
 
   search(): void {
-    let worker = { id: -1, firstName: this.searchFirstName, lastName: this.searchLastName, email: this.searchEmail, roleId: this.searchRole, startDate: this.searchDate, role: "" }
+    console.log(this.searchRole);
+    let worker = { id: -1, firstName: this.searchFirstName, lastName: this.searchLastName, email: this.searchEmail, roleId: +this.searchRole, startDate: this.searchDate, role: "" }
     this.workerService.searchWorkers(worker, this.size).subscribe(data => {
       this.initializeTable(data);
     });

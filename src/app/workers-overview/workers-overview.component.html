@@ -23,9 +23,9 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header" style="display:initial;">
-            <button type="button" class="close" style="float: right;" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title" style="text-align: center;">Search employee</h4>
-          </div>
+          <button type="button" class="close" style="float: right;" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" style="text-align: center;">Search employee</h4>
+        </div>
         <div class="modal-body">
           <form>
             <div class="form-group">
@@ -40,17 +40,10 @@
               <label for="email">Email</label>
               <input name="email" class="form-control" id="email" [(ngModel)]="searchEmail">
             </div>
-            <div>
+            <div *ngIf="roles">
               <label for="role">Role</label>
-              <select name="role" class="form-control" [(ngModel)]="searchRole" required>
-                <option value="">Select a role</option>
-                <option value="Schoonmaker">Cleaner</option>
-                <option value="Assistent manager">Assistent Manager</option>
-                <option value="Manager">Manager</option>
-                <option value="Serveerder">Server</option>
-                <option value="Receptionist">Receptionist</option>
-                <option value="Chef kok">Chef</option>
-                <option value="Kok">Cook</option>
+              <select name="role" [(ngModel)]="searchRole" class="custom-select d-block my-3" required>
+                <option *ngFor="let role of roles" value={{role.id}}>{{role.name}}</option>
               </select>
             </div>
 
@@ -83,8 +76,8 @@
           <td class="align-baseline" width="5%">{{ worker.id }}</td>
           <td class="align-baseline" width="10%">{{ worker.firstName }}</td>
           <td class="align-baseline" width="10%">{{ worker.lastName }}</td>
-          <td class="align-baseline" width="10%">{{worker.role}}</td>
-          <td class="align-baseline" width="10%">{{worker.startDate.reverse().join('-')}}</td>
+          <td class="align-baseline" width="10%">{{ worker.role }}</td>
+          <td class="align-baseline" width="10%">{{ worker.startDate.slice().reverse().join("-") }}</td>
           <td class="align-baseline" width="10%">
             <a href="/editworker/{{ worker.id }}">Edit/Delete</a>
           </td>
@@ -100,7 +93,7 @@
       </li>
 
       <li *ngFor="let page of pagesArray; index as i" class="page-item" [ngClass]="{'active': currentPage === i}">
-        <a class="page-link custom" (click)="pageClick(i);">{{i+1}}</a>
+        <a class="page-link custom" (click)="pageClick(i);">{{ i+1 }}</a>
       </li>
 
       <li class="page-item" [ngClass]="{'disabled': currentPage === totalPages - 1}">
