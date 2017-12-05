@@ -1,5 +1,5 @@
 export interface UserList {
-  content: User[];
+  content: Worker[];
   totalElemens: number;
   totalPages: number;
   last: boolean;
@@ -26,23 +26,21 @@ export interface Role {
   name: string;
 }
 
-export interface SingleUser {
-  data: User;
+export class Worker {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  roleId: number;
+  role: string;
+  startDate: number[];
 }
 
 export interface WorkerPut {
   id: number;
   firstName: string;
   lastName: string;
-  email: string;
-  startDate: number[];
-  role?: number;
-}
-
-export interface User {
-  id: number;
-  firstName: string;
-  lastName: string;
+  roleId: number;
   email: string;
   startDate: number[];
 }
