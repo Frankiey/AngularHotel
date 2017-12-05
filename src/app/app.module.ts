@@ -14,6 +14,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { StandardScheduleComponent } from './standard-schedule/standard-schedule.component';
 import { EditRolesComponent } from './edit-roles/edit-roles.component';
 import { RoleService } from './role.service';
+import { DailyScheduleComponent } from './daily-schedule/daily-schedule.component';
+import { ScheduleService } from './schedule.service';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { RoleService } from './role.service';
     NavbarComponent,
     StandardScheduleComponent,
     EditRolesComponent,
+    DailyScheduleComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import { RoleService } from './role.service';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [WorkerService, RoleService],
+  providers: [WorkerService, RoleService, ScheduleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
