@@ -40,9 +40,9 @@
               <label for="email">Email</label>
               <input name="email" class="form-control" id="email" [(ngModel)]="searchEmail">
             </div>
-            <div *ngIf="roles">
+            <div *ngIf="roles" class="form-group" >
               <label for="role">Role</label>
-              <select name="role" [(ngModel)]="searchRole" class="custom-select d-block my-3" required>
+              <select name="role" [(ngModel)]="searchRole" class="form-control" required>
                 <option *ngFor="let role of roles" value={{role.id}}>{{role.name}}</option>
               </select>
             </div>
