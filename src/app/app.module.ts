@@ -16,6 +16,7 @@ import { EditRolesComponent } from './edit-roles/edit-roles.component';
 import { RoleService } from './role.service';
 import { DailyScheduleComponent } from './daily-schedule/daily-schedule.component';
 import { ScheduleService } from './schedule.service';
+import { DateFromNumber } from './date-from-number-pipe';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ScheduleService } from './schedule.service';
     StandardScheduleComponent,
     EditRolesComponent,
     DailyScheduleComponent,
+    DateFromNumber
   ],
   imports: [
     BrowserModule,
