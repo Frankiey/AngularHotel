@@ -6,6 +6,7 @@ import { WorkerService } from '../worker.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpHandler } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { RoleService } from '../role.service';
 
 describe('WorkersOverviewComponent', () => {
   let component: WorkersOverviewComponent;
@@ -13,17 +14,15 @@ describe('WorkersOverviewComponent', () => {
 
   beforeEach(async(() => {
 
-    let WorkerServiceStub = {
-    };
+    let WorkerServiceStub = {};
 
-    let RouterStub = {
-    };
+    let RouterStub = {};
 
-    let HttpClientStub = {
-    };
+    let HttpClientStub = {};
 
-    let HttpHandlerStub = {
-    };
+    let HttpHandlerStub = {};
+
+    let roleStub = {};
 
 
     TestBed.configureTestingModule({
@@ -33,7 +32,8 @@ describe('WorkersOverviewComponent', () => {
         {provide: WorkerService, useValue: WorkerServiceStub },
         {provide: HttpClient, useValue: HttpClientStub },
         {provide: HttpHandler, useValue: HttpHandlerStub },
-        {provide: Router, useValue: RouterStub }
+        {provide: Router, useValue: RouterStub },
+        { provide: RoleService, useValue: roleStub}
        ]
     })
     .compileComponents();

@@ -59,23 +59,23 @@ describe('EditWorkerComponent', () => {
     expect(component.inputFirstName).toBe(undefined);
     expect(component.inputLastName).toBe(undefined);
     expect(component.inputRole).toBe(undefined);
-    expect(component.inputAvatar).toBe(undefined);
     expect(component.inputStartDate).toBe(undefined);
   });
 
   it('FillFields should display user values', () => {
     let user: User = {
-      first_name: 'testFirstName',
-      last_name: 'testLastName',
+      firstName: 'testFirstName',
+      lastName: 'testLastName',
       id: 776677,
-      avatar: 'testAvatar'
+      email: 'test@test.nl',
+      startDate: [2017, 11, 11]
     };
     component.fillFields(user);
 
     expect(component.id).toBe(776677);
     expect(component.inputFirstName).toBe('testFirstName');
     expect(component.inputLastName).toBe('testLastName');
-    expect(component.inputAvatar).toBe('testAvatar');
+    expect(component.inputStartDate).toBe('2017-11-11');
   });
 
   it('Submit should do nothing when deleted', () => {
