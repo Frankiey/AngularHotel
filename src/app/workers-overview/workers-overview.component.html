@@ -79,7 +79,7 @@
           <td class="align-baseline" width="10%">{{ worker.role }}</td>
           <td class="align-baseline" width="10%">{{ worker.startDate.slice().reverse().join("-") }}</td>
           <td class="align-baseline" width="10%">
-            <a href="#" routerLink="/editworker/{{ worker.id }}">Edit/Delete</a>
+            <a  (click)="redirectTo(worker.id);">Edit/Delete</a>
           </td>
         </tr>
       </tbody>

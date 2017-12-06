@@ -11,6 +11,7 @@ describe('DailyScheduleComponent', () => {
 
   beforeEach(async(() => {
     let scheduleStub = {};
+
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [ DailyScheduleComponent, DateFromNumber ],
