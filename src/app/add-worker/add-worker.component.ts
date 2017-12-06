@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkersOverviewComponent } from '../workers-overview/workers-overview.component';
 import { WorkerService } from '../worker.service';
-import { Worker } from '../worker';
 import {} from '../../../node_modules/bootstrap/dist/';
 import { Router } from '@angular/router';
 import { RoleService } from '../role.service';
-import { Role, RoleList } from '../Api-types';
+import { Role, RoleList, Worker } from '../Api-types';
 
 @Component({
   selector: 'app-add-worker',
