@@ -74,6 +74,7 @@ export class WorkersOverviewComponent implements OnInit {
   }
 
   redirectTo(id: number) {
+    //console.log(this.location.path());
     this.router.navigateByUrl('editworker/' + id);
     console.log(id);
   }

@@ -1,17 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component, OnInit } from '@angular/core';
-import { WorkerService } from '../worker.service';
+
+import { EditRoleComponent } from './edit-role.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RoleService } from '../role.service';
-import { Location } from '@angular/common';
-import { Role } from '../Api-types';
-import { EditRolesComponent } from './edit-roles.component';
 import { FormsModule } from '@angular/forms';
 
+import { Component, OnInit } from '@angular/core';
+import { WorkerService } from '../worker.service';
+import { Location } from '@angular/common';
+import { Role } from '../Api-types';
 
-describe('EditRolesComponent', () => {
-  let component: EditRolesComponent;
-  let fixture: ComponentFixture<EditRolesComponent>;
+describe('EditRoleComponent', () => {
+  let component: EditRoleComponent;
+  let fixture: ComponentFixture<EditRoleComponent>;
 
   beforeEach(async(() => {
     let activatedRouteStub = {};
@@ -20,8 +21,8 @@ describe('EditRolesComponent', () => {
     let locationStub = {};
 
     TestBed.configureTestingModule({
+      declarations: [ EditRoleComponent ],
       imports: [FormsModule],
-      declarations: [ EditRolesComponent ],
       providers: [
         { provide: Location, useValue: locationStub},
         { provide: ActivatedRoute, useValue: activatedRouteStub },
@@ -33,7 +34,7 @@ describe('EditRolesComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditRolesComponent);
+    fixture = TestBed.createComponent(EditRoleComponent);
     component = fixture.componentInstance;
   });
 
