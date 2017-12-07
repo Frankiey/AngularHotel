@@ -26,9 +26,8 @@
 
     <div class="form-group">
       <label for="startDate">Start Date</label>
-      <input name="inputStartDate" [(ngModel)]="inputStartDate" type="date" class="form-control" id="startDate" disabled>
+      <input type="text" name="inputStartDate" [(ngModel)]="inputStartDate" format="dd-MM-yyyy" class="form-control" id="startDate" disabled>
     </div>
-
 
     <div *ngIf="successDelete" class="alert alert-success alert-dismissable">
       <a href="/overview" class="close" data-dismiss="alert" aria-label="close" (click)="redirectTo()">&times;</a>
