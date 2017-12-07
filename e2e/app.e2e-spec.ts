@@ -47,10 +47,7 @@ describe('angular-fancy-hotel App', () => {
   it('checks if the add button redirects to the addworker page', () => {
     page.navigateToOverview();
     page.getAddButton().click();
-
-    delay(20000).then(() => {
-      expect(page.getAddWorkerTitle()).toEqual('Add Employee');
-    });
+      expect(page.getAddWorkerTitle()).toEqual('Add Employee');    
   });
 
   it('checks if table contains rows', () => {

@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { WorkerService } from '../worker.service';
-import { Worker } from '../worker';
-import { UserList, SingleUser, User, WorkerPut} from '../Api-types';
+import { UserList, Worker, WorkerPut } from '../Api-types';
+import { RoleService } from '../role.service';
+import { Role } from '../Role';
 
 
 @Component({
@@ -13,13 +14,14 @@ import { UserList, SingleUser, User, WorkerPut} from '../Api-types';
 })
 export class EditWorkerComponent implements OnInit {
 
+  worker: Worker;
+
   id: number = 0;
   inputFirstName: string;
   inputLastName: string;
-  inputRole: string;
+  inputRole: number;
   inputStartDate: string;
   inputEmail: string;
-  //inputAvatar: string;
 
   deleted = false;
   index: number;
@@ -27,50 +29,52 @@ export class EditWorkerComponent implements OnInit {
   successDelete: boolean;
   successEdit: boolean;
 
+  roles: Role[];
+
   constructor(
     private route: ActivatedRoute,
     private location: Location,
     private workerService: WorkerService,
+    private roleService: RoleService,
     private router: Router
   ) { }
 
   ngOnInit() {
     this.getWorker();
+    this.roleService.getRoles().subscribe(x => this.roles = x.content);
   }
 
   getWorker(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.workerService.getWorker(id).subscribe(x => {
-      this.fillFields(x);
+    this.workerService.getWorker(id).subscribe(w => {
+      this.worker = w;
+      this.fillFields(w);
     });
   }
 
-  fillFields(user: User): void {
-    // this.index = this.workerService.workers.indexOf(worker);
+  fillFields(user: Worker): void {
     this.id = user.id;
     this.inputFirstName = user.firstName;
     this.inputLastName = user.lastName;
-    this.inputRole = user.firstName;
-    this.inputStartDate = user.startDate.join('-');
-
-    console.log('fields filled');
+    this.inputRole = user.roleId;
+    this.inputStartDate = new Date(user.startDate * 1000).toLocaleDateString("nl");
   }
 
   submit(): void {
     if (this.deleted) {
-     return;
+      return;
     }
-    let splitDate: string[] = this.inputStartDate.split('-');
 
     let worker: WorkerPut = {
-      id: this.id,
+      id: this.worker.id,
       firstName: this.inputFirstName,
       lastName: this.inputLastName,
+      roleId: this.inputRole,
       email: 'd@d.com',
-      startDate: [Number(splitDate[0]), Number(splitDate[1].valueOf()), Number(splitDate[2])]
+      startDate: this.worker.startDate
     };
 
-    this.workerService.updateWorker(worker).subscribe(x =>  {
+    this.workerService.updateWorker(worker).subscribe(x => {
       this.successEdit = true;
     });
   }
@@ -78,13 +82,11 @@ export class EditWorkerComponent implements OnInit {
   delete(): void {
     this.workerService.deleteWorker(this.id).subscribe(x => {
       this.successDelete = true;
-      console.log('Deleted');
       this.deleted = true;
     });
   }
 
   redirectTo() {
     this.router.navigateByUrl('/overview');
-    console.log('redirected');
   }
 }

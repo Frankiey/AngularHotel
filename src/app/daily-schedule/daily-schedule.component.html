@@ -1,0 +1,59 @@
+<main class="container">
+  <form>
+
+    <div class="form-group">
+        <label for="scheduleDate">Schedule Date</label>
+        <input name="scheduleDate" [(ngModel)]="scheduleDate" type="date" class="form-control" id="scheduleDate">
+    </div>
+
+    <button id="getSchedule" (click)="getSchedule()" class="btn btn-primary">Get Schedule</button>
+  </form>
+  <br/>
+  <div *ngIf="schedule">
+  <h3>Daily Schedule of {{schedule[0].date | dateFromNumber}}</h3>
+  <br/>
+  <div class="table-responsive">
+  <table class="table table-striped" width="100%">
+    <thead>
+      <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Role</th>
+      <th>Morning</th>
+      <th>Afternoon</th>
+      <th>Evening</th>
+      <th>Night</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entry of schedule;let index = index;trackBy:trackByIndex;">
+        <td>{{entry.firstName}}</td>
+        <td>{{entry.lastName}}</td>
+        <td> {{entry.rolName}}</td>
+        <td [ngClass]="{available: entry.scheduleEntries.MORNING}">
+          <input  type="checkBox" [(ngModel)]="entry.scheduleEntries.MORNING" class="form-control">
+        </td>
+        <td [ngClass]="{available: entry.scheduleEntries.AFTERNOON}">
+          <input  type="checkBox" [(ngModel)]="entry.scheduleEntries.AFTERNOON" class="form-control">
+        </td>
+        <td [ngClass]="{available: entry.scheduleEntries.EVENING}">
+          <input  type="checkBox" [(ngModel)]="entry.scheduleEntries.EVENING" class="form-control">
+        </td>
+        <td [ngClass]="{available: entry.scheduleEntries.NIGHT}">
+          <input  type="checkBox" [(ngModel)]="entry.scheduleEntries.NIGHT" class="form-control">
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="successEdit" class="alert alert-success alert-dismissable" (click)="setEdit()">
+      <a href="/overview" class="close" data-dismiss="alert" aria-label="close" (click)="setEdit()">&times;</a>
+      <strong>Saving changes successful!</strong>
+  </div>
+
+  <button (click)="submit()" class="btn btn-primary">Save</button>
+
+  </div>
+</div>
+</main>

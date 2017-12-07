@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Worker } from '../worker';
 import { WorkerService } from '../worker.service';
-import { UserList, User } from '../Api-types';
+import { UserList, Worker } from '../Api-types';
 import { Router } from '@angular/router';
 import { RoleService } from '../role.service';
 import { Role } from '../Role';
@@ -22,7 +21,7 @@ export class WorkersOverviewComponent implements OnInit {
   searchLastName: string;
   searchEmail: string;
   searchRole: string;
-  searchDate: number[];
+  searchDate: string;
 
   workers: Worker[];
   roles: Role[];
@@ -55,6 +54,10 @@ export class WorkersOverviewComponent implements OnInit {
     }
   }
 
+  getDate(worker: Worker): string {
+    return new Date(worker.startDate * 1000).toLocaleDateString("nl");
+  }
+
   paginationClick(size: number) {
     this.loadTable(0, size);
   }
@@ -64,14 +67,14 @@ export class WorkersOverviewComponent implements OnInit {
   }
 
   search(): void {
-    console.log(this.searchRole);
-    let worker = { id: -1, firstName: this.searchFirstName, lastName: this.searchLastName, email: this.searchEmail, roleId: +this.searchRole, startDate: this.searchDate, role: "" }
+    let worker = {id: -1, firstName: this.searchFirstName, lastName: this.searchLastName, email: this.searchEmail, roleId: +this.searchRole, role: "", startDate: new Date(this.searchDate).valueOf() };
     this.workerService.searchWorkers(worker, this.size).subscribe(data => {
       this.initializeTable(data);
     });
   }
 
   redirectTo(id: number) {
+    //console.log(this.location.path());
     this.router.navigateByUrl('editworker/' + id);
     console.log(id);
   }

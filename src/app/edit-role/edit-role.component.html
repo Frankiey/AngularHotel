@@ -1,0 +1,32 @@
+<main>
+    <h1>Edit Role</h1>
+    <form>
+      <div class="form-group">
+        <img width="10%" src="{{ inputAvatar }}">
+      </div>
+      <div class="form-group">
+        <label for="id">Id</label>
+        <input name="id" [(ngModel)]="id" class="form-control" id="id" aria-describedby="id" placeholder="Enter id" disabled>
+      </div>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input name="name" [(ngModel)]="name" class="form-control" id="name">
+      </div>
+  
+      <div *ngIf="successDelete" class="alert alert-success alert-dismissable" (click)="redirectTo()">
+        <strong>Deletion successful!</strong>
+        <br> If you click this message you will return to the role overview
+      </div>
+  
+      <div *ngIf="successEdit" class="alert alert-success alert-dismissable" (click)="redirectTo()">
+        <strong>Saving changes successful!</strong>
+        <br> If you click this message you will return to the role overview
+      </div>
+  
+  
+      <button (click)="submit()" class="btn btn-primary">Edit</button>
+      <button (click)="delete()" class="btn btn-primary">Delete</button>
+
+    </form>
+  
+  </main>

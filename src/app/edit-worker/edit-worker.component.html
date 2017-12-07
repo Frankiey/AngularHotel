@@ -17,23 +17,16 @@
       <input name="inputLastName" [(ngModel)]="inputLastName" class="form-control" id="lastName">
     </div>
 
-    <div>
+    <div *ngIf="roles && this.worker" class="form-group">
       <label for="role">Role</label>
-      <select name="inputRole" [(ngModel)]="inputRole" class="custom-select d-block my-3" required>
-        <option value="">Select a role</option>
-        <option value="Schoonmaker">Cleaner</option>
-        <option value="Assistent manager">Assistent Manager</option>
-        <option value="Manager">Manager</option>
-        <option value="Serveerder">Server</option>
-        <option value="Receptionist">Receptionist</option>
-        <option value="Chef kok">Chef</option>
-        <option value="Kok">Cook</option>
+      <select name="inputRole" [(ngModel)]="inputRole" class="form-control" required>
+        <option *ngFor="let role of roles" value={{role.id}}>{{role.name}}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="startDate">Start Date</label>
-      <input name="inputStartDate" [(ngModel)]="inputStartDate" type="date" class="form-control" id="startDate" disabled>
+      <input type="text" name="inputStartDate" [(ngModel)]="inputStartDate" format="dd-MM-yyyy" class="form-control" id="startDate" disabled>
     </div>
 
 

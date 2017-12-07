@@ -1,5 +1,7 @@
+import { filter } from "rxjs/operators/filter";
+
 export interface UserList {
-  content: User[];
+  content: Worker[];
   totalElemens: number;
   totalPages: number;
   last: boolean;
@@ -26,25 +28,23 @@ export interface Role {
   name: string;
 }
 
-export interface SingleUser {
-  data: User;
+export class Worker {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  roleId: number;
+  role: string;
+  startDate: number;
 }
 
 export interface WorkerPut {
   id: number;
   firstName: string;
   lastName: string;
+  roleId: number;
   email: string;
-  startDate: number[];
-  role?: number;
-}
-
-export interface User {
-  id: number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  startDate: number[];
+  startDate: number;
 }
 
 export interface StandardSchedule {
@@ -52,13 +52,13 @@ export interface StandardSchedule {
   firstName: string;
   lastName: string;
   defaultEntries: {
-      MONDAY: DayShifts;
-      TUESDAY: DayShifts;
-      WEDNESDAY: DayShifts;
-      THURSDAY: DayShifts;
-      FRIDAY: DayShifts;
-      SATURDAY: DayShifts;
-      SUNDAY: DayShifts;
+    MONDAY: DayShifts;
+    TUESDAY: DayShifts;
+    WEDNESDAY: DayShifts;
+    THURSDAY: DayShifts;
+    FRIDAY: DayShifts;
+    SATURDAY: DayShifts;
+    SUNDAY: DayShifts;
   };
 }
 
@@ -67,4 +67,13 @@ export interface DayShifts {
   AFTERNOON: boolean;
   EVENING: boolean;
   NIGHT: boolean;
+}
+
+export interface ScheduleEntry {
+  userId: number;
+  firstName: String;
+  lastName: String;
+  date: number[];
+  scheduleEntries: DayShifts;
+  rolName: string;
 }

@@ -12,8 +12,13 @@ import { EditWorkerComponent } from './edit-worker/edit-worker.component';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { StandardScheduleComponent } from './standard-schedule/standard-schedule.component';
-import { EditRolesComponent } from './edit-roles/edit-roles.component';
 import { RoleService } from './role.service';
+import { HttpModule } from '@angular/http';
+import { RolesOverviewComponent } from './roles-overview/roles-overview.component';
+import { EditRoleComponent } from './edit-role/edit-role.component';
+import { DailyScheduleComponent } from './daily-schedule/daily-schedule.component';
+import { ScheduleService } from './schedule.service';
+import { DateFromNumber } from './date-from-number-pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,10 @@ import { RoleService } from './role.service';
     FrontPageComponent,
     NavbarComponent,
     StandardScheduleComponent,
-    EditRolesComponent,
+    RolesOverviewComponent,
+    EditRoleComponent,
+    DailyScheduleComponent,
+    DateFromNumber
   ],
   imports: [
     BrowserModule,
@@ -32,7 +40,7 @@ import { RoleService } from './role.service';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [WorkerService, RoleService],
+  providers: [WorkerService, RoleService, ScheduleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

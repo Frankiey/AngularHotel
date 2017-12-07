@@ -6,6 +6,10 @@ import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 import { RoleList } from './Api-types';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable()
 export class RoleService {
 
@@ -21,6 +25,32 @@ export class RoleService {
         catchError(this.handleError<RoleList>('getRoles'))
       );
   }
+
+  getRole(id: number = 0): Observable<Role> {
+    return this.http.get<Role>(this.apiUrl + `roles/` + id)
+      .pipe(
+        catchError(this.handleError<Role>('getRoles'))
+      );
+  }
+
+  addRole(role: Role): Observable<Role> {
+    return this.http.post<Role>(this.apiUrl + 'roles', role , httpOptions).pipe(
+      catchError(this.handleError<Role>('addRole'))
+    );
+  }
+
+  deleteRole(id: number): Observable<{} | Role> {
+    return this.http.delete(this.apiUrl + 'roles/' + id, httpOptions).pipe(
+      catchError(this.handleError('deleteRole'))
+    );
+  }
+
+  updateRole(role: Role): Observable<any | Role> {
+    return this.http.put<Role>(this.apiUrl + 'roles/' + role.id, role, httpOptions).pipe(
+      catchError(this.handleError('updateRole', []))
+    );
+  }
+  
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
