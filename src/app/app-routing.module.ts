@@ -5,7 +5,8 @@ import { AddWorkerComponent} from './add-worker/add-worker.component';
 import { EditWorkerComponent } from './edit-worker/edit-worker.component';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { StandardScheduleComponent } from './standard-schedule/standard-schedule.component';
-import { EditRolesComponent } from './edit-roles/edit-roles.component';
+import { RolesOverviewComponent } from './roles-overview/roles-overview.component';
+import { EditRoleComponent } from './edit-role/edit-role.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'addworker', component: AddWorkerComponent },
   { path: 'editworker/:id', component: EditWorkerComponent},
   { path: 'standardschedule/:id', component: StandardScheduleComponent },
-  { path: 'roles', component: EditRolesComponent }
+  { path: 'roles', component: RolesOverviewComponent },
+  { path: 'editrole/:id', component: EditRoleComponent }
 ];
 
 @NgModule({

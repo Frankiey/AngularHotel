@@ -2,31 +2,37 @@ import { Component, OnInit } from '@angular/core';
 import { WorkerService } from '../worker.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RoleService } from '../role.service';
-import { Role } from '../Api-types';
+import { Role, RoleList } from '../Api-types';
+import { Location } from '@angular/common';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-edit-roles',
-  templateUrl: './edit-roles.component.html',
-  styleUrls: ['./edit-roles.component.css']
+  selector: 'app-overview-roles',
+  templateUrl: './roles-overview.component.html',
+  styleUrls: ['./roles-overview.component.css']
 })
-export class EditRolesComponent implements OnInit {
+export class RolesOverviewComponent implements OnInit {
   
   id: number = 0;
   name: string;
 
+  roles: RoleList;
+
   constructor(
     private route: ActivatedRoute,
-    private location: Location,
+    //private location: Location,
     private roleService: RoleService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.getRole();
+    this.roleService.getRoles().subscribe( x => {
+      this.roles = x;
+    });
   }
 
-  getRole(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
+  getRole(id : number): void {
+    //const id = +this.route.snapshot.paramMap.get('id');
     this.roleService.getRole(id).subscribe(x => {
       this.fillFields(x);
     });
@@ -58,9 +64,10 @@ export class EditRolesComponent implements OnInit {
     });
   }
 
-  redirectTo() {
-    this.router.navigateByUrl('/overview');
+  redirectTo(id: number) {
+    //console.log(this.location.path());
+    this.router.navigateByUrl('editrole/' + id);
     console.log('redirected');
   }
-  
+
 }

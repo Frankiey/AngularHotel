@@ -12,8 +12,10 @@ import { EditWorkerComponent } from './edit-worker/edit-worker.component';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { StandardScheduleComponent } from './standard-schedule/standard-schedule.component';
-import { EditRolesComponent } from './edit-roles/edit-roles.component';
 import { RoleService } from './role.service';
+import { HttpModule } from '@angular/http';
+import { RolesOverviewComponent } from './roles-overview/roles-overview.component';
+import { EditRoleComponent } from './edit-role/edit-role.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { RoleService } from './role.service';
     FrontPageComponent,
     NavbarComponent,
     StandardScheduleComponent,
-    EditRolesComponent,
+    RolesOverviewComponent,
+    EditRoleComponent,
   ],
   imports: [
     BrowserModule,
