@@ -37,7 +37,7 @@
     </div>
 
 
-    <div *ngIf="successDelete" class="alert alert-success alert-dismissable">
+    <div *ngIf="successDelete" class="alert alert-success alert-dismissable" id="deleteSuccess">
       <a href="/overview" class="close" data-dismiss="alert" aria-label="close" (click)="redirectTo()">&times;</a>
       <strong>Deletion successful!</strong>
       <br> If you close this message you will return to the employee overview
@@ -51,7 +51,7 @@
 
 
     <button (click)="submit()" class="btn btn-primary" [ngClass]="{'disabled' : deleted}">Edit</button>
-    <button (click)="delete()" class="btn btn-primary">Delete</button>
+    <button id="delete" (click)="delete()" class="btn btn-primary">Delete</button >
 
 
   </form>

@@ -13,6 +13,10 @@ export class AppPage {
     return browser.get('/overview');
   }
 
+  navigateToSpecificWorker(){
+    return browser.get('/editworker/1');
+  }
+
 // ===================== navigator / selector devider ====================================== //
 
 
@@ -30,8 +34,20 @@ export class AppPage {
     return element(by.css('#addSuccess'));
   }
 
+  getSuccessDeleted(){
+    return element(by.css('#deleteSuccess'));
+  }
+
+  getStartDate() {
+    return element(by.css('#startDate'))
+  }
+
+  getDeleteButton(){
+    return element(by.css('#delete'))
+  }
+
   getSchoonmaker() {
-    return element(by.cssContainingText('option', 'Schoonmaker'));
+    return element(by.cssContainingText('option', 'Kok'));
   }
 
   getDropdownLength() {
@@ -39,7 +55,7 @@ export class AppPage {
   }
 
   getAddWorkerTitle() {
-    return element(by.css('h2')).getText();
+    return element(by.css('h1')).getText();
   }
 
 // === overview worker tests === //

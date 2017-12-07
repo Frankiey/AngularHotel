@@ -6,6 +6,7 @@ import {} from '../../../node_modules/bootstrap/dist/';
 import { Router } from '@angular/router';
 import { RoleService } from '../role.service';
 import { Role, RoleList } from '../Api-types';
+import { race } from 'q';
 
 @Component({
   selector: 'app-add-worker',
