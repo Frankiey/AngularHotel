@@ -1,8 +1,13 @@
 <main class="container">
+
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input name="name" [(ngModel)]="name" class="form-control" id="name" aria-describedby="name" placeholder="Enter role name">
+      </div>      
   
-    <div class="fixed-right">
-      <a role="button" class="btn btn-primary" href="/addrole">Add</a>
-    </div>
+      <button (click)="submit()" class="btn btn-primary">Add</button> 
+    </form>
   
     <div class="container-fluid">
       <div class="row">
@@ -43,4 +48,11 @@
         </ul>
       </nav>
     </div>
-  </main>
+
+    <div *ngIf="succesMsg" class="alert alert-success alert-dismissable" >
+      <a href="/roles" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Created role successfully!</strong>
+      <br> If you click this message you will return to the role overview
+    </div>
+  
+</main>

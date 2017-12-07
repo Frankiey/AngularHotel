@@ -15,12 +15,12 @@ export class RolesOverviewComponent implements OnInit {
   
   id: number = 0;
   name: string;
+  succesMsg: boolean;
 
   roles: RoleList;
 
   constructor(
     private route: ActivatedRoute,
-    //private location: Location,
     private roleService: RoleService,
     private router: Router
   ) { }
@@ -32,30 +32,17 @@ export class RolesOverviewComponent implements OnInit {
   }
 
   getRole(id : number): void {
-    //const id = +this.route.snapshot.paramMap.get('id');
     this.roleService.getRole(id).subscribe(x => {
       this.fillFields(x);
     });
   }
 
   fillFields(role: Role): void {
-    // this.index = this.workerService.workers.indexOf(worker);
+
     this.id = role.id;
     this.name = role.name;
 
     console.log('fields filled');
-  }
-
-  submit(): void {
-
-    let role: Role = {
-      id: this.id,
-      name: this.name,
-    };
-
-    this.roleService.updateRole(role).subscribe(x =>  {
-      //
-    });
   }
 
   delete(): void {
@@ -65,9 +52,17 @@ export class RolesOverviewComponent implements OnInit {
   }
 
   redirectTo(id: number) {
-    //console.log(this.location.path());
     this.router.navigateByUrl('editrole/' + id);
-    console.log('redirected');
+  }
+
+  submit(): void {
+
+    let role: Role = {
+      id : 0,
+      name : this.name
+    };
+
+    this.roleService.addRole(role).subscribe(x => this.succesMsg = true );
   }
 
 }
