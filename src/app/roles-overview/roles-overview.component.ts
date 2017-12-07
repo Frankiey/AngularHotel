@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WorkerService } from '../worker.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RoleService } from '../role.service';
+
 import { Role, RoleList } from '../Api-types';
 import { Location } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
@@ -11,8 +12,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
   templateUrl: './roles-overview.component.html',
   styleUrls: ['./roles-overview.component.css']
 })
+
 export class RolesOverviewComponent implements OnInit {
-  
+
   id: number = 0;
   name: string;
 

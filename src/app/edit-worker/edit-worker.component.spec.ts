@@ -4,46 +4,41 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { WorkerService } from '../worker.service';
-import { Worker } from '../worker';
-import { UserList, SingleUser, User} from '../Api-types';
+
+import { UserList, Worker } from '../Api-types';
 import { FormsModule } from '@angular/forms';
 import 'rxjs/add/observable/of';
 
 import { EditWorkerComponent } from './edit-worker.component';
+import { RoleService } from '../role.service';
 
 describe('EditWorkerComponent', () => {
   let component: EditWorkerComponent;
   let fixture: ComponentFixture<EditWorkerComponent>;
 
   beforeEach(async(() => {
-    let activatedRouteStub = {
-      isLoggedIn: true,
-      user: { name: 'Test User'}
-    };
-    let locationStub = {
-    };
+      let activatedRouteStub = { isLoggedIn: true, user: { name: "Test User" } };
+      let locationStub = {};
 
-    let workerServiceStub = {
-      updateWorker(worker: Worker): Observable<any[] | Worker> {
-        return Observable.of([]);
-      }
-    };
+      let workerServiceStub = { updateWorker(worker: Worker): Observable<any[] | Worker> {
+          return Observable.of([]);
+        } };
 
-    let routerStub = {
+      let routerStub = {};
+      let roleStub = {};
 
-    };
-
-    TestBed.configureTestingModule({
-      imports: [ FormsModule ],
-      declarations: [ EditWorkerComponent ],
-      providers:  [
-        {provide: ActivatedRoute, useValue: activatedRouteStub },
-        {provide: WorkerService, userValue: workerServiceStub},
-        {provide: Location, useValue: locationStub},
-        {provide: Router, useValue: routerStub }
-       ]
-    });
-  }));
+      TestBed.configureTestingModule({
+        imports: [FormsModule],
+        declarations: [EditWorkerComponent],
+        providers: [
+          { provide: ActivatedRoute, useValue: activatedRouteStub },
+          { provide: WorkerService, userValue: workerServiceStub },
+          { provide: Location, useValue: locationStub },
+          { provide: Router, useValue: routerStub },
+          { provide: RoleService, useValue: roleStub}
+        ]
+      });
+    }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(EditWorkerComponent);
@@ -59,23 +54,27 @@ describe('EditWorkerComponent', () => {
     expect(component.inputFirstName).toBe(undefined);
     expect(component.inputLastName).toBe(undefined);
     expect(component.inputRole).toBe(undefined);
-    expect(component.inputAvatar).toBe(undefined);
     expect(component.inputStartDate).toBe(undefined);
   });
 
   it('FillFields should display user values', () => {
-    let user: User = {
-      first_name: 'testFirstName',
-      last_name: 'testLastName',
+    let user: Worker = {
+      firstName: 'testFirstName',
+      lastName: 'testLastName',
       id: 776677,
-      avatar: 'testAvatar'
+      role: 'test',
+      roleId: 1,
+      email: 'test@test.nl',
+      startDate: [2017, 11, 11]
     };
     component.fillFields(user);
 
     expect(component.id).toBe(776677);
     expect(component.inputFirstName).toBe('testFirstName');
     expect(component.inputLastName).toBe('testLastName');
-    expect(component.inputAvatar).toBe('testAvatar');
+    expect(component.inputRole).toBe(1);
+    expect(component.inputFirstName).toBe('testFirstName');
+    expect(component.inputStartDate).toBe('2017-11-11');
   });
 
   it('Submit should do nothing when deleted', () => {

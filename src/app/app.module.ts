@@ -16,6 +16,9 @@ import { RoleService } from './role.service';
 import { HttpModule } from '@angular/http';
 import { RolesOverviewComponent } from './roles-overview/roles-overview.component';
 import { EditRoleComponent } from './edit-role/edit-role.component';
+import { DailyScheduleComponent } from './daily-schedule/daily-schedule.component';
+import { ScheduleService } from './schedule.service';
+import { DateFromNumber } from './date-from-number-pipe';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,8 @@ import { EditRoleComponent } from './edit-role/edit-role.component';
     StandardScheduleComponent,
     RolesOverviewComponent,
     EditRoleComponent,
+    DailyScheduleComponent,
+    DateFromNumber
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,7 @@ import { EditRoleComponent } from './edit-role/edit-role.component';
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [WorkerService, RoleService],
+  providers: [WorkerService, RoleService, ScheduleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
