@@ -1,19 +1,19 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { RoleService } from './role.service';
+import { ScheduleService } from './schedule.service';
 import { HttpClient } from '@angular/common/http';
 
-describe('RoleService', () => {
+describe('ScheduleService', () => {
   beforeEach(() => {
     let httpStub = {};
 
     TestBed.configureTestingModule({
-      providers: [RoleService,
+      providers: [ScheduleService,
       {provide: HttpClient, useValue: httpStub}]
     });
   });
 
-  it('should be created', inject([RoleService], (service: RoleService) => {
+  it('should be created', inject([ScheduleService], (service: ScheduleService) => {
     expect(service).toBeTruthy();
   }));
 });

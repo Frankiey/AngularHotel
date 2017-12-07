@@ -20,14 +20,22 @@ export class WorkerService {
 
   getWorker(id: number): Observable<Worker> {
     return this.http.get<Worker>(this.reqResUrl + 'users/' + id).pipe(
-      catchError(this.handleError<Worker>('getWorker'))
+      catchError(this.handleError<Worker>('getWorker')),
+      map(user => {
+        user = {id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email, roleId: user.roleId, role: user.role, startDate: user.startDate };
+        return user;
+      })
     );
   }
 
   getWorkers(page: number, size: number): Observable<UserList> {
     return this.http.get<UserList>(this.reqResUrl + `users?page=` + page + `&size=` + size)
       .pipe(
-      catchError(this.handleError<UserList>('getWorkers'))
+      catchError(this.handleError<UserList>('getWorkers')),
+      map(list => {
+        list.content = list.content.map(user => { return {id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email, roleId: user.roleId, role: user.role, startDate: user.startDate }});
+        return list;
+      })
       );
   }
 
@@ -35,10 +43,15 @@ export class WorkerService {
     worker.firstName = worker.firstName == "" ? undefined : worker.firstName;
     worker.lastName = worker.lastName == "" ? undefined : worker.lastName;
     worker.email = worker.email == "" ? undefined : worker.email;
+    worker.role = worker.role == "" ? undefined : worker.role;
 
     return this.http.post<UserList>(this.reqResUrl + `users/search?size=` + size, worker)
       .pipe(
-      catchError(this.handleError<UserList>('searchWorkers'))
+      catchError(this.handleError<UserList>('searchWorkers')),
+      map(list => {
+        list.content = list.content.map(user => { return {id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email, roleId: user.roleId, role: user.role, startDate: user.startDate }});
+        return list;
+      })
       );
   }
 
@@ -54,7 +67,7 @@ export class WorkerService {
     );
   }
   addWorker(worker: Worker): Observable<Worker> {
-    return this.http.post<Worker>(this.reqResUrl + 'users', worker , httpOptions).pipe(
+    return this.http.post<Worker>(this.reqResUrl + 'users', worker, httpOptions).pipe(
       catchError(this.handleError<Worker>('addWorker'))
     );
   }
@@ -67,14 +80,11 @@ export class WorkerService {
       );
   }
 
-  updateStandardSchedule(schedule: StandardSchedule): Observable<any[] |StandardSchedule> {
+  updateStandardSchedule(schedule: StandardSchedule): Observable<any[] | StandardSchedule> {
     return this.http.put<StandardSchedule>(this.reqResUrl + 'default-schedule', schedule, httpOptions).pipe(
       catchError(this.handleError('update Standard Schedule', []))
     );
   }
-
-
-
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

@@ -22,7 +22,6 @@ export class EditWorkerComponent implements OnInit {
   inputRole: number;
   inputStartDate: string;
   inputEmail: string;
-  //inputAvatar: string;
 
   deleted = false;
   index: number;
@@ -58,22 +57,21 @@ export class EditWorkerComponent implements OnInit {
     this.inputFirstName = user.firstName;
     this.inputLastName = user.lastName;
     this.inputRole = user.roleId;
-    this.inputStartDate = user.startDate.join('-');
+    this.inputStartDate = new Date(user.startDate * 1000).toLocaleDateString("nl");
   }
 
   submit(): void {
     if (this.deleted) {
       return;
     }
-    let splitDate: string[] = this.inputStartDate.split('-');
 
     let worker: WorkerPut = {
-      id: this.id,
+      id: this.worker.id,
       firstName: this.inputFirstName,
       lastName: this.inputLastName,
       roleId: this.inputRole,
       email: 'd@d.com',
-      startDate: [Number(splitDate[0]), Number(splitDate[1].valueOf()), Number(splitDate[2])]
+      startDate: this.worker.startDate
     };
 
     this.workerService.updateWorker(worker).subscribe(x => {
