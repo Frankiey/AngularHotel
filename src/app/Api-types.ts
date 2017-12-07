@@ -68,3 +68,12 @@ export interface DayShifts {
   EVENING: boolean;
   NIGHT: boolean;
 }
+
+export interface ScheduleEntry {
+  userId: number;
+  firstName: String;
+  lastName: String;
+  date: number[];
+  scheduleEntries: DayShifts;
+  rolName: string;
+}

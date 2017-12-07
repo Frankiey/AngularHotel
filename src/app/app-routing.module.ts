@@ -5,6 +5,7 @@ import { AddWorkerComponent} from './add-worker/add-worker.component';
 import { EditWorkerComponent } from './edit-worker/edit-worker.component';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { StandardScheduleComponent } from './standard-schedule/standard-schedule.component';
+import { DailyScheduleComponent } from './daily-schedule/daily-schedule.component';
 import { EditRolesComponent } from './edit-roles/edit-roles.component';
 
 const routes: Routes = [
@@ -14,7 +15,9 @@ const routes: Routes = [
   { path: 'addworker', component: AddWorkerComponent },
   { path: 'editworker/:id', component: EditWorkerComponent},
   { path: 'standardschedule/:id', component: StandardScheduleComponent },
+  { path: 'schedule', component: DailyScheduleComponent},
   { path: 'roles', component: EditRolesComponent }
+
 ];
 
 @NgModule({

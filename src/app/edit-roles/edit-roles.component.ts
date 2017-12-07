@@ -3,6 +3,7 @@ import { WorkerService } from '../worker.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RoleService } from '../role.service';
 import { Role } from '../Api-types';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-roles',
@@ -10,7 +11,7 @@ import { Role } from '../Api-types';
   styleUrls: ['./edit-roles.component.css']
 })
 export class EditRolesComponent implements OnInit {
-  
+
   id: number = 0;
   name: string;
 
@@ -62,5 +63,4 @@ export class EditRolesComponent implements OnInit {
     this.router.navigateByUrl('/overview');
     console.log('redirected');
   }
-  
 }
