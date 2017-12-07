@@ -3,6 +3,7 @@ import { WorkersOverviewComponent } from '../workers-overview/workers-overview.c
 import { WorkerService } from '../worker.service';
 import { Router } from '@angular/router';
 import { RoleService } from '../role.service';
+import { race } from 'q';
 import { Role, RoleList, Worker } from '../Api-types';
 
 @Component({

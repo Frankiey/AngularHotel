@@ -1,4 +1,8 @@
 import { AppPage } from './app.po';
+import { element, by } from 'protractor';
+import { delay } from 'q';
+import { first } from 'rxjs/operators/first';
+import { max } from 'rxjs/operators/max';
 
 describe('angular-fancy-hotel App', () => {
   let page: AppPage;
@@ -9,23 +13,30 @@ describe('angular-fancy-hotel App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welkom op het werknemers portaal van Saint-Nicolas Lake Resort');
+    expect(page.getParagraphText()).toEqual('Welcome to the employee portal of Saint-Nicolas Lake Resort');
   });
 
-  it('should display welcome message', () => {
+  it('should display Add Employee', () => {
     page.navigateToAddWorker();
-    expect(page.getAddWorkerTitle()).toEqual('Werknemer Toevoegen');
+    expect(page.getAddWorkerTitle()).toEqual('Add Employee');
   });
 
-  it('should display "Gelukt!" message after pressing toevoegen', () => {
-    page.navigateToAddWorker();
-    page.getToevoegenButton().click();
-    expect(page.getSuccess().getText()).toContain('Gelukt!');
+  it('should display "Success!" message after adding an employee', () => {
+    element(by.id('firstName')).sendKeys('Aydin');
+    element(by.id('lastName')).sendKeys('Erdas');
+    element(by.id('email')).sendKeys('Aydin@live.nl');
+    element(by.id('startDate')).sendKeys('11112011');
+    page.getSchoonmaker().click();
+
+    delay(5000).then(() => {
+      page.getToevoegenButton().click();
+      expect(page.getSuccess().getText()).toContain('Success!');
+    });
   });
 
-  it('checks if dropdown contains Schoonmaker', () => {
+  it('checks if dropdown contains Kok', () => {
     page.navigateToAddWorker();
-    expect(page.getSchoonmaker().getText()).toEqual('Schoonmaker');
+    expect(page.getSchoonmaker().getText()).toEqual('Kok');
   });
 
   it('checks if dropdown contains all roles', () => {
@@ -36,22 +47,18 @@ describe('angular-fancy-hotel App', () => {
   it('checks if the add button redirects to the addworker page', () => {
     page.navigateToOverview();
     page.getAddButton().click();
-    expect(page.getAddWorkerTitle()).toEqual('Werknemer Toevoegen');
+      expect(page.getAddWorkerTitle()).toEqual('Add Employee');    
   });
 
-  it('checks if table contains 3 rows', () => {
+  it('checks if table contains rows', () => {
     page.navigateToOverview();
-    expect(page.getNumberofRows().count()).toEqual(3);
+    expect(page.getNumberofRows().count()).toBeGreaterThan(0);
   });
 
-  it('checks if table contains id 1 as first id', () => {
-    page.navigateToOverview();
-    expect(page.getFirstIdofRow().getText()).toEqual('1');
-  });
+  it('should delete selected user', () => {
+    page.navigateToSpecificWorker();
 
-  it('checks if test is able to navigate to page 2 and table contains id 4 as first id in the row', () => {
-    page.navigateToOverview();
-    page.getPage2().click();
-    expect(page.getFirstIdofRow().getText()).toEqual('4');
+    page.getDeleteButton().click();
+    expect(page.getSuccessDeleted().getText()).toContain('Deletion successful!');
   });
 });
