@@ -65,7 +65,7 @@ describe('EditWorkerComponent', () => {
       role: 'test',
       roleId: 1,
       email: 'test@test.nl',
-      startDate: [2017, 11, 11]
+      startDate: 11444444
     };
     component.fillFields(user);
 
@@ -74,7 +74,7 @@ describe('EditWorkerComponent', () => {
     expect(component.inputLastName).toBe('testLastName');
     expect(component.inputRole).toBe(1);
     expect(component.inputFirstName).toBe('testFirstName');
-    expect(component.inputStartDate).toBe('2017-11-11');
+    expect(component.inputStartDate).toBe('13-5-1970');
   });
 
   it('Submit should do nothing when deleted', () => {

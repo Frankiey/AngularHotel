@@ -9,8 +9,7 @@ import { StandardScheduleComponent } from './standard-schedule/standard-schedule
 import { RolesOverviewComponent } from './roles-overview/roles-overview.component';
 import { DailyScheduleComponent } from './daily-schedule/daily-schedule.component';
 import { EditRoleComponent } from './edit-role/edit-role.component';
-
-
+import { HoursOverviewComponent } from './hours-overview/hours-overview.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
@@ -22,6 +21,7 @@ const routes: Routes = [
   { path: 'roles', component: RolesOverviewComponent },
   { path: 'editrole/:id', component: EditRoleComponent },
   { path: 'schedule', component: DailyScheduleComponent},
+  { path: 'hoursoverview', component: HoursOverviewComponent}
 
 ];
 

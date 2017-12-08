@@ -79,7 +79,7 @@
           <td class="align-baseline" width="10%">{{ worker.role }}</td>
           <td class="align-baseline" width="10%">{{ getDate(worker) }}</td>
           <td class="align-baseline" width="10%">
-            <a  (click)="redirectTo(worker.id);">Edit/Delete</a>
+            <a  href="#" routerLink="/overiew/{worker.id}" >Edit/Delete</a>
           </td>
         </tr>
       </tbody>
