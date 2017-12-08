@@ -1,5 +1,5 @@
 import { AppPage } from './app.po';
-import { element, by } from 'protractor';
+import { element, by, protractor } from 'protractor';
 import { delay } from 'q';
 import { first } from 'rxjs/operators/first';
 import { max } from 'rxjs/operators/max';
@@ -21,22 +21,33 @@ describe('angular-fancy-hotel App', () => {
     expect(page.getAddWorkerTitle()).toEqual('Add Employee');
   });
 
+  it('should add an employee', () => {
+    element(by.id('startDate')).sendKeys('1111' + protractor.Key.TAB + '2011');
+    element(by.id('firstName')).sendKeys('Aydin');
+    element(by.id('lastName')).sendKeys('Erdas');
+    element(by.id('email')).sendKeys('Aydin@live.nl');
+    
+    page.getCertainRole().click();
+
+      page.getToevoegenButton().click();
+      expect(page.getSuccess().getText()).toContain('Success!');
+  });
+
   it('should display "Success!" message after adding an employee', () => {
     element(by.id('firstName')).sendKeys('Aydin');
     element(by.id('lastName')).sendKeys('Erdas');
     element(by.id('email')).sendKeys('Aydin@live.nl');
-    element(by.id('startDate')).sendKeys('11112011');
-    page.getSchoonmaker().click();
-
-    delay(5000).then(() => {
+    page.getCertainRole().click();
+    element(by.id('startDate')).sendKeys('1111' + protractor.Key.TAB + '2011');
+    
       page.getToevoegenButton().click();
       expect(page.getSuccess().getText()).toContain('Success!');
-    });
+      page.waitForCSS('#addSuccess')
   });
 
   it('checks if dropdown contains Kok', () => {
     page.navigateToAddWorker();
-    expect(page.getSchoonmaker().getText()).toEqual('Kok');
+    expect(page.getCertainRole().getText()).toEqual('Kok');
   });
 
   it('checks if dropdown contains all roles', () => {
@@ -45,15 +56,16 @@ describe('angular-fancy-hotel App', () => {
   });
 
   it('checks if the add button redirects to the addworker page', () => {
-    page.navigateToOverview();
-    page.getAddButton().click();
-      expect(page.getAddWorkerTitle()).toEqual('Add Employee');    
+    page.navigateToAddWorker();
+    page.waitForCSS('h1');
+      expect(page.getAddWorkerTitle()).toContain('Add Employee');    
   });
 
   it('checks if table contains rows', () => {
     page.navigateToOverview();
+
     expect(page.getNumberofRows().count()).toBeGreaterThan(0);
-  });
+});
 
   it('should delete selected user', () => {
     page.navigateToSpecificWorker();

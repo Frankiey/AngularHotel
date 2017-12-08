@@ -1,4 +1,5 @@
 import { browser, by, element } from 'protractor';
+import { protractor } from 'protractor/built/ptor';
 
 export class AppPage {
   navigateTo() {
@@ -13,19 +14,19 @@ export class AppPage {
     return browser.get('/overview');
   }
 
-  navigateToSpecificWorker(){
+  navigateToSpecificWorker() {
     return browser.get('/editworker/1');
   }
 
-// ===================== navigator / selector devider ====================================== //
+  // ===================== navigator / selector devider ====================================== //
 
 
-// === frontpage test === //
+  // === frontpage test === //
   getParagraphText() {
     return element(by.css('app-root h1')).getText();
   }
 
-// === add worker test === //
+  // === add worker test === //
   getToevoegenButton() {
     return element(by.css('#addWorker'));
   }
@@ -34,7 +35,7 @@ export class AppPage {
     return element(by.css('#addSuccess'));
   }
 
-  getSuccessDeleted(){
+  getSuccessDeleted() {
     return element(by.css('#deleteSuccess'));
   }
 
@@ -42,11 +43,11 @@ export class AppPage {
     return element(by.css('#startDate'))
   }
 
-  getDeleteButton(){
+  getDeleteButton() {
     return element(by.css('#delete'))
   }
 
-  getSchoonmaker() {
+  getCertainRole() {
     return element(by.cssContainingText('option', 'Kok'));
   }
 
@@ -58,11 +59,7 @@ export class AppPage {
     return element(by.css('h1')).getText();
   }
 
-// === overview worker tests === //
-
-  getAddButton() {
-  return element(by.css('a[href="/addworker"]'));
-  }
+  // === overview worker tests === //
 
   getNumberofRows() {
     return element.all(by.css('tbody tr'));
@@ -75,4 +72,20 @@ export class AppPage {
   getFirstIdofRow() {
     return element(by.css('tbody tr:first-child td:first-child'));
   }
+
+  waitForClass(name: string) {
+    const loader = element(by.className(name));
+    browser.wait(protractor.ExpectedConditions.visibilityOf(loader), 5000, 'Element taking too long to appear in the DOM');
+  }
+
+  waitForId(name: string) {
+    const loader = element(by.id(name));
+    browser.wait(protractor.ExpectedConditions.visibilityOf(loader), 5000, 'Element taking too long to appear in the DOM');
+  }
+
+  waitForCSS(name: string) {
+    const loader = element(by.css(name));
+    browser.wait(protractor.ExpectedConditions.visibilityOf(loader), 5000, 'Element taking too long to appear in the DOM');
+  }
+
 }
