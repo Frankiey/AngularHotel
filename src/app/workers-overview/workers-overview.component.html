@@ -40,7 +40,7 @@
               <label for="email">Email</label>
               <input name="email" class="form-control" id="email" [(ngModel)]="searchEmail">
             </div>
-            <div *ngIf="roles" class="form-group" >
+            <div *ngIf="roles" class="form-group">
               <label for="role">Role</label>
               <select name="role" [(ngModel)]="searchRole" class="form-control" required>
                 <option *ngFor="let role of roles" value={{role.id}}>{{role.name}}</option>
@@ -79,7 +79,7 @@
           <td class="align-baseline" width="10%">{{ worker.role }}</td>
           <td class="align-baseline" width="10%">{{ getDate(worker) }}</td>
           <td class="align-baseline" width="10%">
-            <a  (click)="redirectTo(worker.id);">Edit/Delete</a>
+            <a (click)="redirectTo(worker.id);">Edit/Delete</a>
           </td>
         </tr>
       </tbody>

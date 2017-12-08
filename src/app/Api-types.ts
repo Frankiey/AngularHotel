@@ -14,13 +14,14 @@ export interface UserList {
 
 export interface RoleList {
   content: Role[];
-  last: boolean;
   totalElemens: number;
   totalPages: number;
+  last: boolean;
   size: number;
+  number: number;
+  numberOfElements: number;
   first: boolean;
   sort: any;
-  numberOfElements: number;
 }
 
 export interface Role {
