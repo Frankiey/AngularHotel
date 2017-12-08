@@ -19,6 +19,7 @@ import { EditRoleComponent } from './edit-role/edit-role.component';
 import { DailyScheduleComponent } from './daily-schedule/daily-schedule.component';
 import { ScheduleService } from './schedule.service';
 import { DateFromNumber } from './date-from-number-pipe';
+import { HoursOverviewComponent } from './hours-overview/hours-overview.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DateFromNumber } from './date-from-number-pipe';
     RolesOverviewComponent,
     EditRoleComponent,
     DailyScheduleComponent,
-    DateFromNumber
+    DateFromNumber,
+    HoursOverviewComponent
   ],
   imports: [
     BrowserModule,

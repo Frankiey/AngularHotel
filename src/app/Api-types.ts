@@ -74,7 +74,13 @@ export interface ScheduleEntry {
   userId: number;
   firstName: String;
   lastName: String;
-  date: number[];
+  date: Number[];
   scheduleEntries: DayShifts;
   rolName: string;
+}
+
+export interface HoursEntry {
+  firstName: string;
+  lastName: string;
+  hours: number;
 }
