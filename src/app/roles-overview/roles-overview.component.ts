@@ -56,7 +56,7 @@ export class RolesOverviewComponent implements OnInit {
   redirectTo(id: number) {
     this.router.navigateByUrl('editrole/' + id);
   }
-
+  
   submit(): void {
 
     let role: Role = {
