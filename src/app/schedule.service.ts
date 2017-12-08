@@ -17,18 +17,18 @@ export class ScheduleService {
   constructor(private http: HttpClient) { }
 
   getSchedule(date: string): Observable<{} |ScheduleEntry[]> {
-    return this.http.get<ScheduleEntry[]>(this.reqResUrl + 'schedule?date=' + date ).pipe(
+    return this.http.get<ScheduleEntry[]>(this.reqResUrl + 'schedule?date=' + date, httpOptions ).pipe(
       catchError(this.handleError<ScheduleEntry[]>('getSchedule'))
     );
   }
 
   updateSchedule(date: string, schedule: ScheduleEntry[]): Observable<ScheduleEntry[]> {
-    console.log(schedule[0].date);
-    schedule.forEach(element => {
-      element.date = element.date.reverse();
-    });
-    console.log(schedule[0].date);
-    return this.http.put<ScheduleEntry[]>(this.reqResUrl + 'schedule?date=' + date, JSON.stringify(schedule), httpOptions ).pipe(
+    // console.log(schedule[0].date);
+    // schedule.forEach(element => {
+    //   element.date = element.date.reverse();
+    // });
+    // console.log(schedule[0].date);
+    return this.http.put<ScheduleEntry[]>(this.reqResUrl + 'schedule?date=' + date, JSON.stringify(schedule), httpOptions).pipe(
       catchError(this.handleError<ScheduleEntry[]>('putSchedule'))
     );
   }
