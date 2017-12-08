@@ -16,7 +16,8 @@ export class DailyScheduleComponent implements OnInit {
   constructor(private scheduleService: ScheduleService) { }
 
   ngOnInit() {
-
+    this.scheduleDate = new Date().toJSON().slice(0,10);
+    this.getSchedule();
   }
 
   submit(): void {
@@ -28,7 +29,6 @@ export class DailyScheduleComponent implements OnInit {
   getSchedule(): void {
     this.scheduleService.getSchedule(this.scheduleDate).subscribe( x => {
        this.schedule = x as ScheduleEntry[];
-       console.log(this.schedule);
     });
   }
 
