@@ -1,3 +1,20 @@
-.available{
+.form-inline label,
+.form-inline .form-control {
+  margin-right: 15px; 
+}
+
+.available {
   background-color: rgb(83, 218, 83);
+}
+
+.not-available {
+  background-color: rgb(211, 25, 0);
+}
+
+.data {
+  border-right: 1px solid #e9ecef;
+}
+
+.last-data {
+  border-right: 1px solid #d3d5d6;
 }
